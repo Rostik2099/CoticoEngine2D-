@@ -28,6 +28,7 @@ void CEngine::UpdateWindowEvents()
 		if (this->windowEvent->type == sf::Event::Closed)
 			this->window->close();
 	}
+	delete this->windowEvent;
 }
 
 void CEngine::Update()
