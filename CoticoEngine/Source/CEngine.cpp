@@ -12,7 +12,7 @@ CEngine::~CEngine()
 
 void CEngine::Init()
 {
-	std::cout << "Welcome to Cotico Engine!" << std::endl;
+	std::cout << "Welcome to Cotico Engine! The best engine in the world!!!" << std::endl;
 }
 
 void CEngine::CreateWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle)
