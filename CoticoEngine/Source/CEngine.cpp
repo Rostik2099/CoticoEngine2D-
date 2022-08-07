@@ -7,6 +7,19 @@ CEngine::CEngine()
 
 CEngine::~CEngine()
 {
+	std::cout << "Goodbye sweetie" << std::endl;
+	std::cout << "GPU self-destruct programm initiated" << std::endl;
+	sf::Clock clock;
+	sf::Time time1 = clock.getElapsedTime();
+	for(int i = 0; i < 100; i += 5) {
+		std::cout << i << "% complete" << std::endl; 
+		while(true) {
+			time1 = clock.getElapsedTime();
+			if (time1.asSeconds() > 0.6) {clock.restart(); break;}
+		}
+	}
+	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
+	//std::cout << "¯\_(ツ)_/¯" << std::endl;
 	delete this->window;
 }
 
