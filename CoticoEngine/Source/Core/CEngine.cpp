@@ -1,5 +1,6 @@
 #include "CEngine.h"
 
+#include "UI/TextBlock.h"
 CEngine::CEngine()
 {
 	this->Init();
@@ -20,6 +21,7 @@ CEngine::~CEngine()
 	}
 	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
 	//std::cout << "¯\_(ツ)_/¯" << std::endl;
+	ImGui::SFML::Shutdown();
 	delete this->window;
 }
 
@@ -38,6 +40,7 @@ void CEngine::UpdateWindowEvents()
 	this->windowEvent = new sf::Event;
 	while (this->window->pollEvent(*this->windowEvent))
 	{
+		ImGui::SFML::ProcessEvent(*this->windowEvent);
 		if (this->windowEvent->type == sf::Event::Closed)
 			this->window->close();
 	}
@@ -46,11 +49,35 @@ void CEngine::UpdateWindowEvents()
 
 void CEngine::Update()
 {
+	ImGui::SFML::Update(*this->window, deltaClock.restart());
+
+	ImGui::Begin("Ruslan kaban");
+	ImGui::Text("Bebronuh");
+	ImGui::End();
 }
 
 void CEngine::Draw(sf::CircleShape circle)
 {
 	this->window->clear();
 	this->window->draw(circle);
+
+	//UI Render
+	//for (size_t i = 0; i < UITexts.size(); i++)
+	//{
+	//	this->window->draw(*UITexts[i]);
+	//}
+
+	ImGui::SFML::Render(*this->window);
 	this->window->display();
+}
+
+void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize)
+{
+	TextBlock* newText = new TextBlock(text, position, size, pathToFont, fontSize);
+	newText->SetEngine(this);
+}
+
+void CEngine::AddTextToRender(sf::Text text)
+{
+	
 }

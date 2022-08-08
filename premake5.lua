@@ -5,9 +5,10 @@ workspace "CoticoEngine"
 		"Debug",
 		"Release"
 	}
-	startproject "Game"
+	startproject "CoticoEditor"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 include "CoticoEngine"
 include "Game"
+include "CoticoEditor"

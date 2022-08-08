@@ -9,6 +9,8 @@ project "CoticoEngine"
 	{
 		"Source/**.h",
 		"Source/**.cpp",
+		"ThirdParty/include/ImGUI/**.h",
+		"ThirdParty/include/ImGUI/**.cpp",
 		"ThirdParty/include/**.hpp",
 		"ThirdParty/include/**.inl",
 	}
@@ -16,6 +18,8 @@ project "CoticoEngine"
 	includedirs 
 	{
 		"ThirdParty/include",
+		"ThirdParty/include/ImGUI",
+		"Source",
 	}
 
 	libdirs
