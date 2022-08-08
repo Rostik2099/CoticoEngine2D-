@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-#include "UI/UIElement.h"
+#include "UI/UIObject.h"
 
-class TextBlock : public UIElement
+class TextBlock : public UIObject
 {
 public:
-	TextBlock(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize);
+	TextBlock(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingSpeed);
 	~TextBlock();
 
 	virtual void SendToRender() override;

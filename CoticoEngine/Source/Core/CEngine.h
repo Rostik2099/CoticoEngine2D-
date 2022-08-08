@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <list>
 
 #include "ImGui/imgui.h"
 #include "ImGui/imgui-SFML.h"
@@ -26,14 +27,12 @@ public:
 
 	void Update();
 
-	void Draw(sf::CircleShape circle);
+	void Draw();
 
-	void CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize);
+	void CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingSpeed); //appeatingSpeed = 0 мнгновенное появление
 
 	//Setters
 	void AddTextToRender(sf::Text text);
-
-	//void Text(std::string text, sf::Vector2f location, sf::Vector2f size, std::string font, int fontSize);  // text appearing, надо еще насрать распознаванием слов и переносом если не влезает
 
 	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
 
@@ -46,6 +45,8 @@ public:
 	sf::Clock deltaClock;
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
+	std::list<CObject&> Objects;
+	std::list<UIObject&> UIObjects;
 
 private:
 	//Render stuff

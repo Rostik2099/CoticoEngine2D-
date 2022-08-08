@@ -56,10 +56,9 @@ void CEngine::Update()
 	ImGui::End();
 }
 
-void CEngine::Draw(sf::CircleShape circle)
+void CEngine::Draw()
 {
 	this->window->clear();
-	this->window->draw(circle);
 
 	//UI Render
 	//for (size_t i = 0; i < UITexts.size(); i++)
