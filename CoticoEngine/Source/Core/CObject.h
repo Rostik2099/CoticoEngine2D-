@@ -20,14 +20,6 @@ public:
 
 	virtual sf::Drawable& GetForDraw();
 	virtual void AddTick();
-	//void SetEngine(CEngine* engine);
-
-protected:
-	//CEngine* GetEngine();
-
-	//Variables
-private:
-	//CEngine* engine;
 };
 
 

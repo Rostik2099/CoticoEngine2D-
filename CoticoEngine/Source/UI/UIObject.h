@@ -8,6 +8,7 @@ public:
 	virtual void AddTick();
 
 	UIObject();
+	
 	UIObject(sf::RectangleShape shape);
 	UIObject(sf::RectangleShape shape, sf::Text text);
 	UIObject(sf::Sprite sprite);

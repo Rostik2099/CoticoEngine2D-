@@ -19,7 +19,6 @@ CEngine::~CEngine()
 		}
 	}
 	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
-	//std::cout << "¯\_(ツ)_/¯" << std::endl;
 	ImGui::SFML::Shutdown();
 	delete this->window;
 }
@@ -73,9 +72,4 @@ void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f s
 	TextBlock* newText = new TextBlock(text, position, size, pathToFont, fontSize, appearingDelay, textColor, textStyle);
 	// Временно
 	this->Objects.push_back(newText);
-}
-
-void CEngine::AddTextToRender(sf::Text text)
-{
-	
 }
