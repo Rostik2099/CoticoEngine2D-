@@ -4,10 +4,13 @@ TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2
 {
     font.loadFromFile(pathToFont);
     text = sf::Text("", font, fontSize);
+
     text.setFillColor(textColor);
     text.setStyle(textStyle);
     text.setPosition(position);
+
     textString = textStringT;
+    
     progress = (appearingDelayT == 0) ?  1 : 0;
     appearingDelay = appearingDelayT;
 }
@@ -23,9 +26,7 @@ void TextBlock::AddTick() {
     }
 }
 
-TextBlock::~TextBlock()
-{
-}
+TextBlock::~TextBlock() {}
 
 sf::Drawable& TextBlock::GetForDraw() {
     return text;
