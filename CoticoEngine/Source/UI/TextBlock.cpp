@@ -17,7 +17,7 @@ TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2
 }
 
 void TextBlock::UpdateTextBlock(std::string textStr) {
-    text.setString(textStr);
+    text.setString(sf::String::fromUtf8(textStr.begin(), textStr.end()));
 }
 
 void TextBlock::AddTick() {

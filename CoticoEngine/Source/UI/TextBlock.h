@@ -18,6 +18,7 @@ private:
 	void UpdateTextBlock(std::string textString);
 
 	//Variables
+	bool procentSpeed;
 	sf::Text text;
 	sf::Font font;
 	std::string textString;
