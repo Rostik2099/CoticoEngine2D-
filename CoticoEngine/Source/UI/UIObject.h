@@ -1,11 +1,12 @@
 #pragma once
 
-#include "Core/CEngine.h"
 #include "Core/CObject.h"
 
 class UIObject : public CObject 
 {
 public:
+	virtual void AddTick();
+
 	UIObject();
 	UIObject(sf::RectangleShape shape);
 	UIObject(sf::RectangleShape shape, sf::Text text);

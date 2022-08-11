@@ -1,14 +1,8 @@
 #pragma once
 
-#include <iostream>
-#include <list>
-
-#include "ImGui/imgui.h"
-#include "ImGui/imgui-SFML.h"
-
-#include "SFML/System.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include "Core/CObject.h"
+#include "UI/UIObject.h"
+#include "UI/TextBlock.h"
 
 class CEngine
 {
@@ -29,7 +23,7 @@ public:
 
 	void Draw();
 
-	void CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingSpeed); //appeatingSpeed = 0 мнгновенное появление
+	void CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = 0 мнгновенное появление
 
 	//Setters
 	void AddTextToRender(sf::Text text);
@@ -45,8 +39,8 @@ public:
 	sf::Clock deltaClock;
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
-	std::list<CObject&> Objects;
-	std::list<UIObject&> UIObjects;
+	std::list<CObject*> Objects;
+	std::list<UIObject*> UIObjects;
 
 private:
 	//Render stuff

@@ -1,6 +1,5 @@
 #include "CEngine.h"
 
-#include "UI/TextBlock.h"
 CEngine::CEngine()
 {
 	this->Init();
@@ -60,20 +59,20 @@ void CEngine::Draw()
 {
 	this->window->clear();
 
-	//UI Render
-	//for (size_t i = 0; i < UITexts.size(); i++)
-	//{
-	//	this->window->draw(*UITexts[i]);
-	//}
+	for(auto &t : Objects) {
+		this->window->draw(t->GetForDraw());
+		t->AddTick();
+	}
 
 	ImGui::SFML::Render(*this->window);
 	this->window->display();
 }
 
-void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize)
+void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay, sf::Color textColor, sf::Text::Style textStyle)
 {
-	TextBlock* newText = new TextBlock(text, position, size, pathToFont, fontSize);
-	newText->SetEngine(this);
+	TextBlock* newText = new TextBlock(text, position, size, pathToFont, fontSize, appearingDelay, textColor, textStyle);
+	// Временно
+	this->Objects.push_back(newText);
 }
 
 void CEngine::AddTextToRender(sf::Text text)

@@ -15,7 +15,7 @@ int main()
     {
         Engine.UpdateWindowEvents();
         Engine.Update();
-        Engine.Draw(circle);
+        Engine.Draw();
     }
 
     return 0;

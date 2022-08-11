@@ -1,25 +1,13 @@
 #include "CObject.h"
 
-CObject::CObject()
-{
+CObject::CObject() {}
 
+sf::Drawable& CObject::GetForDraw()
+{
+    //sf::Shape* empty = new sf::Shape();
+    return sf::RectangleShape();
 }
 
-void CObject::SetEngine(CEngine* engine)
-{
-    this->engine = engine;
-}
+void CObject::AddTick() {}
 
-CEngine* CObject::GetEngine()
-{
-    return this->engine;
-}
-
-void CObject::SendToRender()
-{
-    
-}
-
-CObject::~CObject()
-{
-}
+CObject::~CObject() {}

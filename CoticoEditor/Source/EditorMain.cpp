@@ -7,20 +7,14 @@ int main()
 	Engine.CreateWindow(1280, 720, "CoticoEngine", sf::Style::Default);
 	ImGui::SFML::Init(*Engine.window);
 
-	sf::Text text;
-	Engine.CreateText("RuslanKaban", sf::Vector2f(100.f, 200.f), sf::Vector2f(100.f,150.f), "Content/Fonts/Calibri.ttf", 24);
-	sf::CircleShape biba;
-
-	std::vector<sf::Text> bebra;
-	sf::Text boba;
-	bebra.push_back(boba);
-	//Main loop
 	sf::Clock deltaClock;
+	Engine.CreateText("Andrey", sf::Vector2f(400.0 , 400.0), sf::Vector2f(5.0, 6.0), "Content/Fonts/Calibri.ttf", 24, 0.0, sf::Color::Magenta, sf::Text::Bold);
+	//Main loop
 	while (Engine.window->isOpen())
 	{
 		Engine.UpdateWindowEvents();
 		Engine.Update();
-		Engine.Draw(biba);
+		Engine.Draw();
 	}
 
 	return 0;

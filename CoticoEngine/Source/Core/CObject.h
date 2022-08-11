@@ -1,6 +1,14 @@
 #pragma once
 
-#include "Core/CEngine.h"
+#include <iostream>
+#include <list>
+
+#include "ImGui/imgui.h"
+#include "ImGui/imgui-SFML.h"
+
+#include "SFML/System.hpp"
+#include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
 
 class CObject
 {
@@ -10,15 +18,16 @@ public:
 	CObject();
 	~CObject();
 
-	void SetEngine(CEngine* engine);
+	virtual sf::Drawable& GetForDraw();
+	virtual void AddTick();
+	//void SetEngine(CEngine* engine);
 
 protected:
-	CEngine* GetEngine();
+	//CEngine* GetEngine();
 
-	virtual void SendToRender();
 	//Variables
 private:
-	CEngine* engine;
+	//CEngine* engine;
 };
 
 
