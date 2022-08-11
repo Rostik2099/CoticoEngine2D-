@@ -11,7 +11,8 @@ TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2
 
     textString = textStringT;
     
-    progress = (appearingDelayT == 0) ?  1 : 0;
+    progress = (appearingDelayT == 0) ?  1.0 : 0.0;
+    if (progress == 1.0) UpdateTextBlock(textString); 
     appearingDelay = appearingDelayT;
 }
 
