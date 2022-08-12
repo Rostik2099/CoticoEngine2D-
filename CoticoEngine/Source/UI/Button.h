@@ -17,10 +17,11 @@ public:
 
 private:
 	sf::RectangleShape buttonShape;
+
+	short unsigned buttonState;
+public:
 	sf::Color idleColor;
 	sf::Color hoverColor;
 	sf::Color pressedColor;
-
-	short unsigned buttonState;
 };
 

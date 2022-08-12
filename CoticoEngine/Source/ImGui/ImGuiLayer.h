@@ -13,5 +13,6 @@ public:
 	~ImGuiLayer();
 	
 	virtual void Render();
+	virtual void Tick();
 };
 

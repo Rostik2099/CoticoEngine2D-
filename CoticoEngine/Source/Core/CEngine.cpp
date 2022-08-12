@@ -66,6 +66,7 @@ void CEngine::Update()
 		for (auto& layer : this->ImGuiLayers)
 		{
 			layer->Render();
+			layer->Tick();
 		}
 	}
 }

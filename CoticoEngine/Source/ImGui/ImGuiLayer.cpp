@@ -11,3 +11,7 @@ ImGuiLayer::~ImGuiLayer()
 void ImGuiLayer::Render()
 {
 }
+
+void ImGuiLayer::Tick()
+{
+}
