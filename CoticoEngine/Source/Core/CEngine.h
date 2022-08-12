@@ -5,6 +5,8 @@
 #include "UI/TextBlock.h"
 #include "UI/Button.h"
 
+enum ApplicationType {Editor = 0, Game};
+
 class CEngine
 {
 
@@ -38,6 +40,7 @@ public:
 	sf::Clock deltaClock;
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
+	ApplicationType appType;
 
 private:
 	std::list<CObject*> Objects;

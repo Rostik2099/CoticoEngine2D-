@@ -40,7 +40,8 @@ void CEngine::UpdateWindowEvents()
 	this->windowEvent = new sf::Event;
 	while (this->window->pollEvent(*this->windowEvent))
 	{
-		ImGui::SFML::ProcessEvent(*this->windowEvent);
+		if(appType == Editor)
+			ImGui::SFML::ProcessEvent(*this->windowEvent);
 		if (this->windowEvent->type == sf::Event::Closed)
 			this->window->close();
 	}
@@ -49,11 +50,14 @@ void CEngine::UpdateWindowEvents()
 
 void CEngine::Update()
 {
-	ImGui::SFML::Update(*this->window, this->deltaClock.restart());
+	if (appType == Editor)
+	{
+		ImGui::SFML::Update(*this->window, this->deltaClock.restart());
 
-	ImGui::Begin("Ruslan kaban");
-	ImGui::Text("Bebronuh");
-	ImGui::End();
+		ImGui::Begin("Ruslan kaban");
+		ImGui::Text("Bebronuh");
+		ImGui::End();
+	}
 }
 
 void CEngine::Draw()
@@ -65,7 +69,8 @@ void CEngine::Draw()
 		t->Tick();
 	}
 
-	ImGui::SFML::Render(*this->window);
+	if(appType == Editor)
+		ImGui::SFML::Render(*this->window);
 	this->window->display();
 }
 
