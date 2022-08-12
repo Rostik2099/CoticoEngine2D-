@@ -71,8 +71,20 @@ void CEngine::Draw()
 void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
 {
 	TextBlock *newText = new TextBlock(text, position, size, pathToFont, fontSize, appearingDelay, lineSpacing, textColor, textStyle);
+	newText->SetEngine(this);
 
 	this->Objects.push_back(newText);
 
-	for(auto &t : newText->children) this->Objects.push_back(t);
+	for(auto &t : newText->children)
+		this->Objects.push_back(t);
+}
+
+Button* CEngine::CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor)
+{
+	Button* newButton = new Button(position, size, buttonIdleColor, buttonHoverColor, buttonPressedColor);
+	newButton->SetEngine(this);
+
+	this->Objects.push_back(newButton);
+	
+	return newButton;
 }

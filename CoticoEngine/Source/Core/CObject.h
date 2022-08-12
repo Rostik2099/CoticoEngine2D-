@@ -10,6 +10,7 @@
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
 
+class CEngine;
 class CObject
 {
 
@@ -18,8 +19,16 @@ public:
 	CObject();
 	~CObject();
 
+	sf::Vector2f GetMousePosition();
+
 	virtual sf::Drawable& GetForDraw();
 	virtual void AddTick();
+
+	CEngine* GetEngine();
+	void SetEngine(CEngine* engine);
+
+private:
+	CEngine* engine;
 };
 
 

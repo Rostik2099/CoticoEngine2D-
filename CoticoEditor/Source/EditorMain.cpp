@@ -1,6 +1,5 @@
 #include "Core/CEngine.h"
 
-
 int main()
 {
 	CEngine Engine;
@@ -16,6 +15,7 @@ int main()
 
 	Engine.CreateText("Русяпрогеймер2008", sf::Vector2f(200.0 , 200.0), sf::Vector2f(300.0, 300.0), "Content/Fonts/Calibri.ttf", 50, -50, 5, sf::Color::Red, sf::Text::Bold);
 
+	Button* test = Engine.CreateButton(sf::Vector2f(620.f, 320.f), sf::Vector2f(150.f, 80.f), sf::Color::Green, sf::Color::Yellow, sf::Color::Blue);
 	//Однажды я сбегу копать тоннели в майнкрафт, и вы меня больше не найдете
 
 	//Main loop
@@ -24,6 +24,9 @@ int main()
 		Engine.UpdateWindowEvents();
 		Engine.Update();
 		Engine.Draw();
+
+		if (test->isPressed())
+			std::cout << "Ruslan Kaban" << std::endl;
 	}
 
 	return 0;
