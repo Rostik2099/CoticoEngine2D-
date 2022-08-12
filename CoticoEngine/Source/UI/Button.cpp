@@ -20,7 +20,7 @@ sf::Drawable& Button::GetForDraw()
 	return buttonShape;
 }
 
-void Button::AddTick()
+void Button::Tick()
 {
 	this->buttonState = Idle;
 	if (this->buttonShape.getGlobalBounds().contains(GetMousePosition()))

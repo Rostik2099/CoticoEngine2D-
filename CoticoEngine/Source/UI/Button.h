@@ -11,7 +11,7 @@ public:
 	~Button();
 
 	virtual sf::Drawable& GetForDraw() override;
-	virtual void AddTick() override;
+	virtual void Tick() override;
 
 	bool isPressed() const;
 

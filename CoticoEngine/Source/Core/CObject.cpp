@@ -8,7 +8,7 @@ sf::Drawable& CObject::GetForDraw()
     return sf::RectangleShape();
 }
 
-void CObject::AddTick() {}
+void CObject::Tick() {}
 
 CEngine* CObject::GetEngine()
 {

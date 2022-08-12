@@ -11,7 +11,7 @@ public:
 	~TextBlock();	
 
 	virtual sf::Drawable& GetForDraw() override;
-	virtual void AddTick() override;
+	virtual void Tick() override;
 
 	//Variables
 	std::list<TextBlock*> children;
@@ -31,7 +31,6 @@ private:
 	float appearingDelay;
 
 protected:
-
 	sf::Text GetText();
 };
 

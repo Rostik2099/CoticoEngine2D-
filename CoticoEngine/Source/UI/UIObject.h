@@ -5,7 +5,7 @@
 class UIObject : public CObject 
 {
 public:
-	virtual void AddTick();
+	virtual void Tick();
 
 	UIObject();
 	

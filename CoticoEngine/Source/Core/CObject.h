@@ -22,7 +22,7 @@ public:
 	sf::Vector2f GetMousePosition();
 
 	virtual sf::Drawable& GetForDraw();
-	virtual void AddTick();
+	virtual void Tick();
 
 	CEngine* GetEngine();
 	void SetEngine(CEngine* engine);

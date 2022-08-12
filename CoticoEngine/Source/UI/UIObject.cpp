@@ -1,6 +1,6 @@
 #include "UIObject.h"
 
-void UIObject::AddTick() {}
+void UIObject::Tick() {}
 
 UIObject::UIObject() {}
 

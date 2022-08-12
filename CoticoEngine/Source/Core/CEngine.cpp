@@ -20,6 +20,7 @@ CEngine::~CEngine()
 	}
 	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
 	ImGui::SFML::Shutdown();
+	delete this->windowEvent;
 	delete this->window;
 }
 
@@ -48,7 +49,7 @@ void CEngine::UpdateWindowEvents()
 
 void CEngine::Update()
 {
-	ImGui::SFML::Update(*this->window, deltaClock.restart());
+	ImGui::SFML::Update(*this->window, this->deltaClock.restart());
 
 	ImGui::Begin("Ruslan kaban");
 	ImGui::Text("Bebronuh");
@@ -61,7 +62,7 @@ void CEngine::Draw()
 
 	for(auto &t : Objects) {
 		this->window->draw(t->GetForDraw());
-		t->AddTick();
+		t->Tick();
 	}
 
 	ImGui::SFML::Render(*this->window);

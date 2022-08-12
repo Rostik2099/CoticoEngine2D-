@@ -52,7 +52,7 @@ sf::Drawable& TextBlock::GetForDraw() {
     return text;
 }
 
-void TextBlock::AddTick() {
+void TextBlock::Tick() {
     if (progress < 1.0)  {
         if(procentSpeed) {
             if(lastDelay > 0) --lastDelay;
@@ -95,10 +95,4 @@ std::list<std::pair<std::string, int>> TextBlock::strParcing(std::string str) { 
     return strs;
 }
 
-sf::Text TextBlock::GetText() {return text;}
-
-
-
-
-
-
+sf::Text TextBlock::GetText() { return text; }
