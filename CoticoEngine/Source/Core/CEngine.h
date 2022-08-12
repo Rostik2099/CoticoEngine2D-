@@ -4,6 +4,7 @@
 #include "UI/UIObject.h"
 #include "UI/TextBlock.h"
 #include "UI/Button.h"
+#include "ImGui/ImGuiLayer.h"
 
 enum ApplicationType {Editor = 0, Game};
 
@@ -17,6 +18,8 @@ private:
 public:
 	CEngine();
 	~CEngine();
+
+	void AddIGLayer(ImGuiLayer* newLayer);
 
 	void CreateWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit = 0);
 
@@ -45,5 +48,6 @@ public:
 private:
 	std::list<CObject*> Objects;
 	std::list<UIObject*> UIObjects;
+	std::list<ImGuiLayer*> ImGuiLayers;
 };
 

@@ -1,10 +1,12 @@
 #include "Core/CEngine.h"
+#include "Properties.h"
 
 int main()
 {
 	CEngine Engine;
 	Engine.CreateWindow(1280, 720, "CoticoEngine", sf::Style::Default, 60);
 	ImGui::SFML::Init(*Engine.window);
+	Engine.AddIGLayer(new Properties);
 
 	Engine.CreateText("Andrey", sf::Vector2f(400.0 , 400.0), sf::Vector2f(120.0, 30.0), "Content/Fonts/Calibri.ttf", 24, -20.0, 5, sf::Color::Magenta, sf::Text::Italic);
 

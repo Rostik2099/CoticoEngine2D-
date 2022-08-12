@@ -19,9 +19,18 @@ CEngine::~CEngine()
 		}
 	}
 	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
-	ImGui::SFML::Shutdown();
+	if(this->appType == Editor)
+		ImGui::SFML::Shutdown();
 	delete this->windowEvent;
 	delete this->window;
+}
+
+void CEngine::AddIGLayer(ImGuiLayer* newLayer)
+{
+	if (this->appType == Editor)
+	{
+		this->ImGuiLayers.push_back(newLayer);
+	}
 }
 
 void CEngine::Init()
@@ -40,7 +49,7 @@ void CEngine::UpdateWindowEvents()
 	this->windowEvent = new sf::Event;
 	while (this->window->pollEvent(*this->windowEvent))
 	{
-		if(appType == Editor)
+		if(this->appType == Editor)
 			ImGui::SFML::ProcessEvent(*this->windowEvent);
 		if (this->windowEvent->type == sf::Event::Closed)
 			this->window->close();
@@ -50,13 +59,14 @@ void CEngine::UpdateWindowEvents()
 
 void CEngine::Update()
 {
-	if (appType == Editor)
+	if (this->appType == Editor)
 	{
 		ImGui::SFML::Update(*this->window, this->deltaClock.restart());
 
-		ImGui::Begin("Ruslan kaban");
-		ImGui::Text("Bebronuh");
-		ImGui::End();
+		for (auto& layer : this->ImGuiLayers)
+		{
+			layer->Render();
+		}
 	}
 }
 
@@ -69,7 +79,7 @@ void CEngine::Draw()
 		t->Tick();
 	}
 
-	if(appType == Editor)
+	if(this->appType == Editor)
 		ImGui::SFML::Render(*this->window);
 	this->window->display();
 }

@@ -1,6 +1,7 @@
 project "CoticoEngine"
 	kind "StaticLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -20,6 +21,7 @@ project "CoticoEngine"
 		"ThirdParty/include",
 		"ThirdParty/include/ImGUI",
 		"Source",
+		"%{wks.location}/CoticoEditor/Source"
 	}
 
 	libdirs

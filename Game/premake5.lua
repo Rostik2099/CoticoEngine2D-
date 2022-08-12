@@ -1,6 +1,7 @@
 project "Game"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -14,7 +15,7 @@ project "Game"
 	includedirs
 	{
 		"%{wks.location}/CoticoEngine/Source",
-		"%{wks.location}/CoticoEngine/ThirdParty/include"
+		"%{wks.location}/CoticoEngine/ThirdParty/include",
 	}
 
 	libdirs
