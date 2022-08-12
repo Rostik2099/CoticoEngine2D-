@@ -57,9 +57,9 @@ void TextBlock::AddTick() {
         if(procentSpeed) {
             if(lastDelay > 0) --lastDelay;
             else {
-                UpdateTextBlock(textString.substr(0, floor(textString.size() * progress)));
+                UpdateTextBlock(textString.substr(0, ceil(textString.size() * progress)));
                 lastDelay = appearingDelay;
-                progress += 1.001 / textString.size();
+                progress += 1.0001 / textString.size();
             }
         }
         else {
