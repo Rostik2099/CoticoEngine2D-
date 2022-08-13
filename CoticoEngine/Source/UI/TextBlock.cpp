@@ -1,5 +1,9 @@
 #include "TextBlock.h"
 
+TextBlock::TextBlock()
+{
+}
+
 TextBlock::TextBlock(std::list<CObject*> &Objects, std::list<CObject*>::iterator parentObject, std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
 {
     font.loadFromFile(pathToFont);
@@ -68,7 +72,17 @@ void TextBlock::Tick() {
             UpdateTextBlock(textString.substr(0, floor(textString.size() * progress)));
         }
     }
+}   
+
+void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> properties)
+{
+    TextBlockParams params = GetTextParams(properties);
+    this->text.setPosition(params.position);
+    this->font.loadFromFile(params.fontPath);
+    this->text.setFont(this->font);
+    this->text.setString(params.text);
 }
+
 
 TextBlock::TextBlock(std::string textStringT, float newPosY, float appearingDelayT, sf::Text textT) {
     text = textT; text.setPosition(sf::Vector2f(text.getPosition().x, newPosY));

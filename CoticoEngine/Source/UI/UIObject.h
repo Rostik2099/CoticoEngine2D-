@@ -2,19 +2,42 @@
 
 #include "Core/CObject.h"
 
+struct ButtonParams
+{
+	sf::Vector2f position;
+	sf::Vector2f size;
+	sf::Color idleColor;
+	sf::Color hovColor;
+	sf::Color pressedColor;
+};
+
+struct TextBlockParams
+{
+	sf::Vector2f position;
+	sf::Vector2f size;
+	std::string fontPath;
+	std::string text;
+};
+
 class UIObject : public CObject 
 {
 public:
 	virtual void Tick();
+	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties);
 
 	UIObject();
-	
-	UIObject(sf::RectangleShape shape);
-	UIObject(sf::RectangleShape shape, sf::Text text);
-	UIObject(sf::Sprite sprite);
-	UIObject(sf::Sprite sprite, sf::Text text);
-	UIObject(sf::Text text);
-
 	~UIObject();
+
+protected:
+	TextBlockParams GetTextParams(std::list<std::pair<std::string, std::string>> properties);
+	ButtonParams GetButtonParams(std::list<std::pair<std::string, std::string>> properties);
+
+public:
+	std::string name;
+
+//Parsers
+private:
+	sf::Color ParseColor(std::string value);
+	sf::Vector2f ParseVector2f(std::string value);
 };
 

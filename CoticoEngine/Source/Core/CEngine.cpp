@@ -77,11 +77,16 @@ void CEngine::Draw()
 {
 	this->window->clear();
 
-	for(auto &t : Objects) {
+	for(auto &t : this->Objects) {
 		this->window->draw(t->GetForDraw());
 		t->Tick();
 	}
-	std::cout << "Objects in window: " << Objects.size() << std::endl;
+	for (auto& widget : this->widgets)
+	{
+		widget->Draw();
+		widget->Tick();
+	}
+	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)
 		ImGui::SFML::Render(*this->window);
 	this->window->display();
@@ -101,4 +106,13 @@ Button* CEngine::CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Colo
 	this->Objects.push_back(newButton);
 	
 	return newButton;
+}
+
+void CEngine::CreateWidget(std::string pathToFile)
+{
+	Widget* newWidget = new Widget;
+	newWidget->SetEngine(this);
+	newWidget->ReadFromFile(pathToFile);
+
+	this->widgets.push_back(newWidget);
 }

@@ -5,6 +5,7 @@
 #include "UI/TextBlock.h"
 #include "UI/Button.h"
 #include "ImGui/ImGuiLayer.h"
+#include "UI/Widget.h"
 
 enum ApplicationType {Editor = 0, Game};
 
@@ -34,6 +35,8 @@ public:
 	void CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = мнгновенное появление, положительное значение - появление по % от текста, отрицательное - посимволам (округлится вниз)
 
 	Button* CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
+
+	void CreateWidget(std::string pathToFile);
 	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
 
 	//void ResizedAnimation(std::vector<std::string> pictures, std::vector<sf::Vector2f> location, std::vector<sf::Vector2f> size);
@@ -51,5 +54,6 @@ private:
 	std::list<CObject*> Objects;
 	std::list<UIObject*> UIObjects;
 	std::list<ImGuiLayer*> ImGuiLayers;
+	std::list<Widget*> widgets;
 };
 
