@@ -1,6 +1,6 @@
 #include "TextBlock.h"
 
-TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
+TextBlock::TextBlock(std::list<CObject*> &Objects, std::list<CObject*>::iterator parentObject, std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
 {
     font.loadFromFile(pathToFont);
     text = sf::Text(textStringT, font, fontSize);
@@ -11,17 +11,16 @@ TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2
 
     if(text.getLocalBounds().width > size.x) {
         std::list<std::pair<std::string, int>> parcStr = strParcing(textStringT);
-        //for(auto &t : parcStr) std::cout << t.first << "\t" << t.second << std::endl;
         std::string str = ""; int i = 0;
         for(auto &t : parcStr) {
             float newPosY = position.y + i * (text.getLocalBounds().height + lineSpacing);
-            TextBlock *new_text = new TextBlock(str, newPosY, appearingDelay, text);
-            if (new_text->GetText().getLocalBounds().width > size.x) {  
-                TextBlock *newText = new TextBlock(str, newPosY, appearingDelay, text);       
-                children.push_back(newText);
+            TextBlock *newText = new TextBlock(str, newPosY, appearingDelay, text);
+            if (newText->GetText().getLocalBounds().width > size.x) {   
+                std::cout << str << std::endl;   
+                Objects.insert(parentObject, newText);
                 str = t.first; str += " "; ++i;
             }
-            else {str += t.first; str += " "; delete new_text;}
+            else {str += t.first; str += " "; delete newText;}
         }
         UpdateTextBlock("");
         return;
@@ -44,6 +43,8 @@ TextBlock::TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2
         procentSpeed = false;
         appearingDelay = appearingDelayT;
     }
+
+    Objects.insert(parentObject, this);
 }
 
 TextBlock::~TextBlock() {}

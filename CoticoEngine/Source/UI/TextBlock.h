@@ -7,14 +7,11 @@
 class TextBlock : public UIObject
 {
 public:
-	TextBlock(std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular);
+	TextBlock(std::list<CObject*> &Objects, std::list<CObject*>::iterator parentObject, std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular);
 	~TextBlock();	
 
 	virtual sf::Drawable& GetForDraw() override;
 	virtual void Tick() override;
-
-	//Variables
-	std::list<TextBlock*> children;
 
 private:
 

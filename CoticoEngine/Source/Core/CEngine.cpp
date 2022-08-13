@@ -57,6 +57,8 @@ void CEngine::UpdateWindowEvents()
 	delete this->windowEvent;
 }
 
+std::list<CObject*>::iterator CEngine::GetObjectsBegin() {return Objects.begin();}
+
 void CEngine::Update()
 {
 	if (this->appType == Editor)
@@ -79,21 +81,16 @@ void CEngine::Draw()
 		this->window->draw(t->GetForDraw());
 		t->Tick();
 	}
-
+	std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)
 		ImGui::SFML::Render(*this->window);
 	this->window->display();
 }
 
-void CEngine::CreateText(std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
+void CEngine::CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
 {
-	TextBlock *newText = new TextBlock(text, position, size, pathToFont, fontSize, appearingDelay, lineSpacing, textColor, textStyle);
+	TextBlock *newText = new TextBlock(this->Objects, parentObject, text, position, size, pathToFont, fontSize, appearingDelay, lineSpacing, textColor, textStyle);
 	newText->SetEngine(this);
-
-	this->Objects.push_back(newText);
-
-	for(auto &t : newText->children)
-		this->Objects.push_back(t);
 }
 
 Button* CEngine::CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor)
