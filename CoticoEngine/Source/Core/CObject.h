@@ -24,6 +24,8 @@ public:
 	virtual sf::Drawable& GetForDraw();
 	virtual void Tick();
 
+	virtual void setTransparency(float procent);
+
 	CEngine* GetEngine();
 	void SetEngine(CEngine* engine);
 

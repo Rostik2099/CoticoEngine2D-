@@ -27,13 +27,15 @@ public:
 
 	std::list<CObject*>::iterator GetObjectsBegin();
 
+	void DeteleObject(std::list<CObject*>::iterator object);
+
 	void Update();
 
 	void Draw();
 
-	void CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = мнгновенное появление, положительное значение - появление по % от текста, отрицательное - посимволам (округлится вниз)
+	std::list<CObject*>::iterator CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = мнгновенное появление, положительное значение - появление по % от текста, отрицательное - посимволам (округлится вниз)
 
-	Button* CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
+	Button* CreateButton(std::list<CObject*>::iterator parentObject, sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
 	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
 
 	//void ResizedAnimation(std::vector<std::string> pictures, std::vector<sf::Vector2f> location, std::vector<sf::Vector2f> size);
@@ -51,5 +53,7 @@ private:
 	std::list<CObject*> Objects;
 	std::list<UIObject*> UIObjects;
 	std::list<ImGuiLayer*> ImGuiLayers;
+
+	sf::Vector2f ScalePosition(sf::Vector2f oldPosition);
 };
 

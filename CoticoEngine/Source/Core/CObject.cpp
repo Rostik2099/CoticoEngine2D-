@@ -2,6 +2,14 @@
 #include "Core/CEngine.h"
 
 CObject::CObject() {}
+CObject::~CObject() {}
+
+sf::Vector2f CObject::GetMousePosition()
+{
+    sf::Mouse mouse;
+    
+    return sf::Vector2f(mouse.getPosition(*engine->window).x, mouse.getPosition(*engine->window).y);
+}
 
 sf::Drawable& CObject::GetForDraw()
 {
@@ -9,6 +17,8 @@ sf::Drawable& CObject::GetForDraw()
 }
 
 void CObject::Tick() {}
+
+void CObject::setTransparency(float procent) {}
 
 CEngine* CObject::GetEngine()
 {
@@ -20,11 +30,5 @@ void CObject::SetEngine(CEngine* engine)
     this->engine = engine;
 }
 
-CObject::~CObject() {}
 
-sf::Vector2f CObject::GetMousePosition()
-{
-    sf::Mouse mouse;
-    
-    return sf::Vector2f(mouse.getPosition(*engine->window).x, mouse.getPosition(*engine->window).y);
-}
+
