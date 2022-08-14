@@ -1,18 +1,13 @@
 #include "Properties.h"
 
-Properties::Properties()
-{
-}
+Properties::Properties(){}
 
-Properties::~Properties()
-{
-}
+Properties::~Properties(){}
 
 void Properties::Render()
 {
-	char buf[255];
 	ImGui::Begin("Properties", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
-	ImGui::InputText("Text", buf, sizeof(buf));
+	ImGui::InputText("Text", this->buffer, CHAR_MAX);
 	ImGui::ColorEdit3("Idle Color", idleColor);
 	ImGui::ColorEdit3("Hover Color", hoverColor);
 	ImGui::ColorEdit3("Pressed Color", pressedColor);

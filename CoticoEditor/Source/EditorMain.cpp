@@ -1,6 +1,8 @@
 #include "Core/CEngine.h"
 #include "Properties.h"
+#include "ElementsList.h"
 #include "TestWidget.h"
+#include "TWidget.h"
 
 int main()
 {
@@ -8,12 +10,16 @@ int main()
 	Engine.appType = Editor;
 	Engine.CreateAppWindow(1280, 720, "CoticoEngine", sf::Style::Default, 60);
 	ImGui::SFML::Init(*Engine.window);
-	Properties* newProp = new Properties;
-	Engine.AddIGLayer(newProp);
 
 	CObject bebra;
 	bebra.SetEngine(&Engine);
-	bebra.CreateWidget<TestWidget>();
+
+	Properties* Prop = new Properties;
+	ElementsList* ElemList = new ElementsList;
+	ElemList->currentWidget = bebra.CreateWidget<TestWidget>();
+	Engine.AddIGLayer(Prop);
+	Engine.AddIGLayer(ElemList);
+
 	//Engine.CreateWidget("Content/Ruslan.cewidget");
 
 
@@ -26,7 +32,7 @@ int main()
 	//Engine.CreateText(Engine.GetObjectsBegin(), "Русяпрогеймер2008", sf::Vector2f(200.0 , 200.0), sf::Vector2f(300.0, 300.0), "Content/Fonts/Calibri.ttf", 50, -50, 5, sf::Color::Red, sf::Text::Bold);
 
 	Button* test = Engine.CreateButton(sf::Vector2f(620.f, 320.f), sf::Vector2f(150.f, 80.f), sf::Color::Green, sf::Color::Yellow, sf::Color::Blue);
-	newProp->button = test;
+	Prop->button = test;
 	//Однажды я сбегу копать тоннели в майнкрафт, и вы меня больше не найдете
 	
 
@@ -38,7 +44,7 @@ int main()
 		Engine.Draw();
 
 		if (test->isPressed())
-			std::cout << "Ruslan Kaban" << std::endl;
+			bebra.CreateWidget<TWidget>();
 	}
 
 	return 0;
