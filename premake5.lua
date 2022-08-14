@@ -3,8 +3,8 @@ workspace "CoticoEngine"
 	configurations
 	{
 		"Debug",
+		"Shipping",
 		"Release",
-		"Shipping"
 	}
 	startproject "CoticoEditor"
 

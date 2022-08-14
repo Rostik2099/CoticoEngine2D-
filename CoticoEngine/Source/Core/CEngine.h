@@ -49,11 +49,11 @@ public:
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
 	ApplicationTypes appType;
-	std::list<Widget*> widgets;
 
 private:
 	std::list<CObject*> Objects;
 	std::list<UIObject*> UIObjects;
 	std::list<ImGuiLayer*> ImGuiLayers;
+	std::list<Widget*> widgets;
 };
 
