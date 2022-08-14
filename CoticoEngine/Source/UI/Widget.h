@@ -11,14 +11,31 @@ public:
 	void Draw();
 
 	virtual void Tick() override;
-
-	void ReadFromFile(std::string pathToFile);
+	virtual void OnConstruct();
+	void ReadFromFile();
 protected:
-	void Bind(UIObject* objectToBind, std::string bindableName);
+	template<typename Type>
+	Type* Bind(std::string bindableName)
+	{
+		Type* bindableObject = nullptr;
+		for (auto& obj : this->UIObjects)
+		{
+			if (obj->name == bindableName)
+			{
+				bindableObject = dynamic_cast<Type*>(obj);
+				break;
+			}
+		}
+		if (bindableObject == nullptr)
+			std::cout << "Failed to Bind: " << bindableName << std::endl;
+		return bindableObject;
+	};
+
 private:
 	void CreateObject(std::string object, std::list<std::string> properties);
 
 protected:
 	std::list<UIObject*> UIObjects;
+	std::string pathToFile = "Content/Ruslan.cewidget";
 };
 

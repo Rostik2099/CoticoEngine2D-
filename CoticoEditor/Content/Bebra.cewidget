@@ -1,7 +1,7 @@
 #Button=Ruslan
 position=100,80
 size=100,50
-idleColor=255,0,0,255
+idleColor=255,100,0,255
 hovColor=242,255,158,255
 pressedColor=242,0,228,255
 

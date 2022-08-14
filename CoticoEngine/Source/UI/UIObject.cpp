@@ -70,6 +70,7 @@ sf::Color UIObject::ParseColor(std::string value)
         }
         start = end + 1;
     }
+
     return sf::Color(r, g, b, a);
 }
 

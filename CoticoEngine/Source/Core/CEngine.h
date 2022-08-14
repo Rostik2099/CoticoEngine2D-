@@ -36,7 +36,7 @@ public:
 
 	Button* CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
 
-	void CreateWidget(std::string pathToFile);
+	void CreateWidget(Widget* widgetToCreate);
 	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
 
 	//void ResizedAnimation(std::vector<std::string> pictures, std::vector<sf::Vector2f> location, std::vector<sf::Vector2f> size);
@@ -49,11 +49,11 @@ public:
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
 	ApplicationType appType;
+	std::list<Widget*> widgets;
 
 private:
 	std::list<CObject*> Objects;
 	std::list<UIObject*> UIObjects;
 	std::list<ImGuiLayer*> ImGuiLayers;
-	std::list<Widget*> widgets;
 };
 

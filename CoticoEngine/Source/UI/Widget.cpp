@@ -13,7 +13,7 @@ UIObject* SpawnUIObject(std::string objName, std::list<std::pair<std::string, st
 	return spawnedObject;
 }
 
-Widget::Widget(){}
+Widget::Widget(){  }
 
 Widget::~Widget()
 {
@@ -39,10 +39,12 @@ void Widget::Tick()
 	}
 }
 
-void Widget::ReadFromFile(std::string pathToFile)
+void Widget::OnConstruct() {}
+
+void Widget::ReadFromFile()
 {
 	std::ifstream fin;
-	fin.open(pathToFile);
+	fin.open(this->pathToFile);
 	if (fin.is_open())
 	{
 		std::string line;
@@ -66,12 +68,8 @@ void Widget::ReadFromFile(std::string pathToFile)
 			}
 		}
 	}
-	else std::cout << "Can't open file: " << pathToFile << std::endl;
+	else std::cout << "Can't open file: " << this->pathToFile << std::endl;
 	fin.close();
-}
-
-void Widget::Bind(UIObject* objectToBind, std::string bindableName)
-{
 }
 
 

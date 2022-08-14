@@ -1,4 +1,5 @@
 #include "CEngine.h"
+#include "TestWidget.h"
 
 CEngine::CEngine()
 {
@@ -108,11 +109,11 @@ Button* CEngine::CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Colo
 	return newButton;
 }
 
-void CEngine::CreateWidget(std::string pathToFile)
+void CEngine::CreateWidget(Widget* widgetToCreate)
 {
-	Widget* newWidget = new Widget;
-	newWidget->SetEngine(this);
-	newWidget->ReadFromFile(pathToFile);
+	widgetToCreate->SetEngine(this);
+	widgetToCreate->ReadFromFile();
+	widgetToCreate->OnConstruct();
 
-	this->widgets.push_back(newWidget);
+	this->widgets.push_back(widgetToCreate);
 }

@@ -1,5 +1,6 @@
 #include "Core/CEngine.h"
 #include "Properties.h"
+#include "TestWidget.h"
 
 int main()
 {
@@ -10,7 +11,12 @@ int main()
 	Properties* newProp = new Properties;
 	Engine.AddIGLayer(newProp);
 
-	Engine.CreateWidget("Content/Ruslan.cewidget");
+	CObject bebra;
+	bebra.SetEngine(&Engine);
+	bebra.CreateWidget<TestWidget>();
+	//Engine.CreateWidget("Content/Ruslan.cewidget");
+
+
 	/*Engine.CreateText(Engine.GetObjectsBegin(), "Andrey", sf::Vector2f(400.0 , 400.0), sf::Vector2f(120.0, 30.0), "Content/Fonts/Calibri.ttf", 24, -20.0, 5, sf::Color::Magenta, sf::Text::Italic);
 
 	Engine.CreateText(Engine.GetObjectsBegin(), "Rostislav", sf::Vector2f(500.0 , 500.0), sf::Vector2f(150.0, 60.0), "Content/Fonts/Calibri.ttf", 35, 30, 5, sf::Color::White, sf::Text::Bold);*/
@@ -22,6 +28,7 @@ int main()
 	Button* test = Engine.CreateButton(sf::Vector2f(620.f, 320.f), sf::Vector2f(150.f, 80.f), sf::Color::Green, sf::Color::Yellow, sf::Color::Blue);
 	newProp->button = test;
 	//Однажды я сбегу копать тоннели в майнкрафт, и вы меня больше не найдете
+	
 
 	//Main loop
 	while (Engine.window->isOpen())

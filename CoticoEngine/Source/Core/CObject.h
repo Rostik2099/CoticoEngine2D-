@@ -11,6 +11,7 @@
 #include "SFML/Graphics.hpp"
 
 class CEngine;
+class Widget;
 class CObject
 {
 
@@ -26,6 +27,14 @@ public:
 
 	CEngine* GetEngine();
 	void SetEngine(CEngine* engine);
+
+	template<typename Type>
+	Widget* CreateWidget()
+	{
+		Widget* newWidget = new Type;
+		GetEngine()->CreateWidget(newWidget);
+		return newWidget;
+	};
 
 private:
 	CEngine* engine;
