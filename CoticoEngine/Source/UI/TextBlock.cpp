@@ -1,5 +1,7 @@
 #include "TextBlock.h"
 
+TextBlock::TextBlock(){}
+
 TextBlock::TextBlock(std::list<CObject*> &Objects, std::list<CObject*>::iterator &parentObject, std::string textStringT, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelayT, float lineSpacing, sf::Color textColor, sf::Text::Style textStyle)
 {
     font.loadFromFile(pathToFont);
@@ -56,6 +58,8 @@ sf::Drawable& TextBlock::GetForDraw() {
 
 void TextBlock::Tick() {
     if (progress < 1.0)  {
+
+    
         if(procentSpeed) {
             if(lastDelay > 0) --lastDelay;
             else {

@@ -22,10 +22,6 @@ CEngine::~CEngine()
 	std::cout << "Thanks for using our software. With love, CANAVA *cmok*" << std::endl;
 	if(this->appType == Editor)
 		ImGui::SFML::Shutdown();
-	/*if(this->windowEvent != nullptr) 
-		delete this->windowEvent;
-	if(this->window != nullptr) 
-		delete this->window;*/
 }
 
 void CEngine::AddIGLayer(ImGuiLayer* newLayer)

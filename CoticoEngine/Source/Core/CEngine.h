@@ -37,7 +37,6 @@ public:
 	std::list<CObject*>::iterator CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = мнгновенное появление, положительное значение - появление по % от текста, отрицательное - посимволам (округлится вниз)
 
 	Button* CreateButton(std::list<CObject*>::iterator parentObject, sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
-	Button* CreateButton(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
 
 	void CreateWidget(Widget* widgetToCreate);
 	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
