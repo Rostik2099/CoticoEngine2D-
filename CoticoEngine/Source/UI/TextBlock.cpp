@@ -69,6 +69,15 @@ void TextBlock::Tick() {
             UpdateTextBlock(textString.substr(0, floor(textString.size() * progress)));
         }
     }
+}   
+
+void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> properties)
+{
+    TextBlockParams params = GetTextParams(properties);
+    this->text.setPosition(params.position);
+    this->font.loadFromFile(params.fontPath);
+    this->text.setFont(this->font);
+    this->text.setString(params.text);
 }
 
 void TextBlock::setTransparency(float procent) {

@@ -1,9 +1,14 @@
+#include <Windows.h>
 #include "Core/CEngine.h"
 
-int main()
+int main() 
 {
+    ShowWindow(GetConsoleWindow(), SW_SHOW);
+#ifdef SHIPPING
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
     CEngine Engine;
-    Engine.CreateWindow(1280, 720, "Cool game", sf::Style::Default);
+    Engine.CreateAppWindow(1280, 720, "Cool game", sf::Style::Default);
     Engine.appType = Game;
 
     sf::CircleShape circle(100.f);

@@ -1,4 +1,5 @@
 #include "CEngine.h"
+#include "TestWidget.h"
 
 CEngine::CEngine()
 {
@@ -38,10 +39,9 @@ void CEngine::AddIGLayer(ImGuiLayer* newLayer)
 void CEngine::Init()
 {
 	std::cout << "Welcome to Cotico Engine! The best engine in the world!!!" << std::endl;
-	
 }
 
-void CEngine::CreateWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit)
+void CEngine::CreateAppWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit)
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), windowName, windowStyle);
 	if (frameLimit != 0) this->window->setFramerateLimit(frameLimit);
@@ -95,11 +95,16 @@ void CEngine::Draw()
 {
 	this->window->clear();
 
-	for(auto &t : Objects) {
+	for(auto &t : this->Objects) {
 		this->window->draw(t->GetForDraw());
 		t->Tick();
 	}
-
+	for (auto& widget : this->widgets)
+	{
+		widget->Draw();
+		widget->Tick();
+	}
+	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)
 		ImGui::SFML::Render(*this->window);
 	this->window->display();
@@ -122,6 +127,15 @@ Button* CEngine::CreateButton(std::list<CObject*>::iterator parentObject, sf::Ve
 	this->Objects.insert(parentObject, newButton);
 	
 	return newButton;
+}
+
+void CEngine::CreateWidget(Widget* widgetToCreate)
+{
+	widgetToCreate->SetEngine(this);
+	widgetToCreate->ReadFromFile();
+	widgetToCreate->OnConstruct();
+
+	this->widgets.push_back(widgetToCreate);
 }
 
 sf::Vector2f CEngine::ScalePosition(sf::Vector2f oldPosition) {

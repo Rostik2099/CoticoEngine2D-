@@ -11,6 +11,8 @@ public:
 	virtual void Render() override;
 	virtual void Tick() override;
 
+	char buffer[255];
+
 	float idleColor[3] = { (float)0 / 255, (float)255 / 255, (float)0 / 255};
 	float hoverColor[3] = { (float)255 / 255, (float)255 / 255, (float)0 / 255};
 	float pressedColor[3] = { (float)0 / 255, (float)0 / 255, (float)255 / 255 };

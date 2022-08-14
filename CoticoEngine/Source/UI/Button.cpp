@@ -1,5 +1,7 @@
 #include "Button.h"
 
+Button::Button(){}
+
 Button::Button(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor)
 {
 	this->buttonState = Idle;
@@ -11,9 +13,7 @@ Button::Button(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleCol
 	this->pressedColor = buttonPressedColor;
 }
 
-Button::~Button()
-{
-}
+Button::~Button(){}
 
 sf::Drawable& Button::GetForDraw()
 {
@@ -27,7 +27,9 @@ void Button::Tick()
 	{
 		this->buttonState = Hover;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
 			this->buttonState = Pressed;
+		}
 	}
 
 	switch (this->buttonState)
@@ -46,6 +48,17 @@ void Button::Tick()
 		break;
 	}
 }
+
+void Button::SetProperties(std::list<std::pair<std::string, std::string>> properties)
+{
+	ButtonParams params = GetButtonParams(properties);
+	this->buttonShape.setPosition(params.position);
+	this->buttonShape.setSize(params.size);
+	this->idleColor = params.idleColor;
+	this->hoverColor = params.hovColor;
+	this->pressedColor = params.pressedColor;
+}
+
 
 bool Button::isPressed() const
 {
