@@ -39,7 +39,7 @@ void CEngine::Init()
 	std::cout << "Welcome to Cotico Engine! The best engine in the world!!!" << std::endl;
 }
 
-void CEngine::CreateWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit)
+void CEngine::CreateAppWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit)
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), windowName, windowStyle);
 	if (frameLimit != 0) this->window->setFramerateLimit(frameLimit);

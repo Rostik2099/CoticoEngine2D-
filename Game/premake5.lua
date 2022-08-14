@@ -37,6 +37,8 @@ project "Game"
 		cppdialect "C++17"
 		staticruntime "On"
 		systemversion "latest"
-
-	filter { "system:windows"}
 		buildoptions "/MD"
+
+	filter "configurations:Shipping"
+		defines "SHIPPING"
+		

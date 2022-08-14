@@ -7,7 +7,7 @@
 #include "ImGui/ImGuiLayer.h"
 #include "UI/Widget.h"
 
-enum ApplicationType {Editor = 0, Game};
+enum ApplicationTypes {Editor = 0, Game};
 
 class CEngine
 {
@@ -22,7 +22,7 @@ public:
 
 	void AddIGLayer(ImGuiLayer* newLayer);
 
-	void CreateWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit = 0);
+	void CreateAppWindow(unsigned int windowWidth, unsigned int windowHeight, std::string windowName, sf::Uint32 windowStyle, unsigned int frameLimit = 0);
 
 	void UpdateWindowEvents();
 
@@ -48,7 +48,7 @@ public:
 	sf::Clock deltaClock;
 	sf::RenderWindow* window;
 	sf::Event* windowEvent;
-	ApplicationType appType;
+	ApplicationTypes appType;
 	std::list<Widget*> widgets;
 
 private:

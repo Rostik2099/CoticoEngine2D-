@@ -6,7 +6,7 @@ int main()
 {
 	CEngine Engine;
 	Engine.appType = Editor;
-	Engine.CreateWindow(1280, 720, "CoticoEngine", sf::Style::Default, 60);
+	Engine.CreateAppWindow(1280, 720, "CoticoEngine", sf::Style::Default, 60);
 	ImGui::SFML::Init(*Engine.window);
 	Properties* newProp = new Properties;
 	Engine.AddIGLayer(newProp);
