@@ -73,6 +73,11 @@ void CEngine::DeteleObject(std::list<CObject*>::iterator object) {
 	object = Objects.erase(object);
 }
 
+void CEngine::AddObject(CObject* object)
+{
+	this->Objects.push_back(object);
+}
+
 void CEngine::Update()
 {
 	if (this->appType == Editor)
@@ -93,12 +98,12 @@ void CEngine::Draw()
 
 	for(auto &t : this->Objects) {
 		this->window->draw(t->GetForDraw());
-		t->Tick();
+		t->Tick(this->deltaClock.restart().asSeconds());
 	}
 	for (auto& widget : this->widgets)
 	{
+		widget->Tick(this->deltaClock.restart().asSeconds());
 		widget->Draw();
-		widget->Tick();
 	}
 	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)

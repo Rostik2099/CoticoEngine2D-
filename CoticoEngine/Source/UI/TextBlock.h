@@ -12,7 +12,7 @@ public:
 	~TextBlock();	
 
 	virtual sf::Drawable& GetForDraw() override;
-	virtual void Tick() override;
+	virtual void Tick(float dt) override;
 	virtual void setTransparency(float procent) override;
 	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties) override;
 

@@ -23,7 +23,7 @@ public:
 	sf::Vector2f GetMousePosition();
 
 	virtual sf::Drawable& GetForDraw();
-	virtual void Tick();
+	virtual void Tick(float dt);
 
 	virtual void setTransparency(float procent);
 

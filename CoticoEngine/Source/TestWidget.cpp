@@ -4,9 +4,9 @@
 
 TestWidget::TestWidget() { this->pathToFile = "Content/Bebra.cewidget"; }
 
-void TestWidget::Tick()
+void TestWidget::Tick(float dt)
 {
-	Widget::Tick();
+	Widget::Tick(dt);
 	if (button && button2)
 	{
 		if (button->isPressed())

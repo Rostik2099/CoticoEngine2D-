@@ -31,11 +31,11 @@ void Widget::Draw()
 	}
 }
 
-void Widget::Tick()
+void Widget::Tick(float dt)
 {
 	for (auto& object : this->UIObjects)
 	{
-		object->Tick();
+		object->Tick(dt);
 	}
 }
 

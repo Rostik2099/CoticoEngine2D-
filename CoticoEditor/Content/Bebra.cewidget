@@ -27,7 +27,7 @@ hovColor=242,255,158,255
 pressedColor=242,0,228,255
 
 #TextBlock=Rostik
-position=100,80
+position=115,85
 size=100,50
 text=Salo
 fontPath=Content/Fonts/arial.ttf

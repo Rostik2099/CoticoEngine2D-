@@ -22,7 +22,7 @@ struct TextBlockParams
 class UIObject : public CObject 
 {
 public:
-	virtual void Tick();
+	virtual void Tick(float dt);
 	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties);
 
 	UIObject();

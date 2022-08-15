@@ -2,7 +2,7 @@
 #include "UI/Button.h"
 #include <string>
 
-void UIObject::Tick() {}
+void UIObject::Tick(float dt) {}
 
 void UIObject::SetProperties(std::list<std::pair<std::string, std::string>> properties){}
 

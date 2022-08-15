@@ -30,6 +30,8 @@ public:
 
 	void DeteleObject(std::list<CObject*>::iterator object);
 
+	void AddObject(CObject* object);
+
 	void Update();
 
 	void Draw();

@@ -9,7 +9,7 @@ public:
 	class Button* button;
 	class Button* button2;
 
-	virtual void Tick() override;
+	virtual void Tick(float dt) override;
 	virtual void OnConstruct() override;
 };
 

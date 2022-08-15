@@ -16,7 +16,7 @@ sf::Drawable& CObject::GetForDraw()
     return sf::RectangleShape();
 }
 
-void CObject::Tick() {}
+void CObject::Tick(float dt) {}
 
 void CObject::setTransparency(float procent) {}
 

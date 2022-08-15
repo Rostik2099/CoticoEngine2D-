@@ -12,7 +12,7 @@ public:
 	~Button();
 
 	virtual sf::Drawable& GetForDraw() override;
-	virtual void Tick() override;
+	virtual void Tick(float dt) override;
 	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties) override;
 
 	bool isPressed() const;

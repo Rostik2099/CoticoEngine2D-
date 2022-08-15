@@ -56,7 +56,7 @@ sf::Drawable& TextBlock::GetForDraw() {
     return text;
 }
 
-void TextBlock::Tick() {
+void TextBlock::Tick(float dt) {
     if (progress < 1.0)  {
 
     

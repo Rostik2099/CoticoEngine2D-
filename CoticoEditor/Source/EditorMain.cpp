@@ -1,8 +1,10 @@
 #include "Core/CEngine.h"
-#include "Properties.h"
-#include "ElementsList.h"
+#include "GUI/Properties.h"
+#include "GUI/ElementsList.h"
 #include "TestWidget.h"
-#include "TWidget.h"
+#include "Tests/TWidget.h"
+#include "Render/Animation.h"
+#include "Tests/TestAnim.h"
 
 int main()
 {
@@ -20,8 +22,6 @@ int main()
 	Engine.AddIGLayer(Prop);
 	Engine.AddIGLayer(ElemList);
 
-	//Engine.CreateWidget("Content/Ruslan.cewidget");
-
 
 	Engine.CreateText(Engine.GetObjectsBegin(), "Andrey", sf::Vector2f(0.3 , 0.3), sf::Vector2f(0.1, 0.04), "Content/Fonts/Calibri.ttf", 24, -20.0, 5, sf::Color::Magenta, sf::Text::Italic);
 
@@ -29,6 +29,11 @@ int main()
 
 	Button* test = Engine.CreateButton(Engine.GetObjectsBegin(), sf::Vector2f(0.26, 0.5), sf::Vector2f(0.12, 0.06), sf::Color::Green, sf::Color::Yellow, sf::Color::Blue);
 	Prop->button = test;
+	
+	TestAnim* testAnim = new TestAnim;
+	Engine.AddObject(testAnim);
+
+	Animation* anim = new Animation(&testAnim->sprite, sf::Vector2u(6, 1), 0.10f, "Content/Animations/Biba.png", true);
 	//Однажды я сбегу копать тоннели в майнкрафт, и вы меня больше не найдете
 	
 
@@ -38,6 +43,11 @@ int main()
 		Engine.UpdateWindowEvents();
 		Engine.Update();
 		Engine.Draw();
+
+		if (anim)
+		{
+			anim->Tick(Engine.deltaClock.restart().asSeconds());
+		}
 
 		if (test->isPressed())
 			bebra.CreateWidget<TWidget>();
