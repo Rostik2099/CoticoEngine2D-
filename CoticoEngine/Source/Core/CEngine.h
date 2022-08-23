@@ -6,6 +6,7 @@
 #include "UI/Button.h"
 #include "ImGui/ImGuiLayer.h"
 #include "UI/Widget.h"
+#include "Render/Animation.h"
 
 enum ApplicationTypes {Editor = 0, Game};
 
@@ -38,10 +39,11 @@ public:
 
 	std::list<CObject*>::iterator CreateText(std::list<CObject*>::iterator parentObject, std::string text, sf::Vector2f position, sf::Vector2f size, std::string pathToFont, int fontSize, float appearingDelay = 0.0, float lineSpacing = 15, sf::Color textColor = sf::Color::White, sf::Text::Style textStyle = sf::Text::Regular); //appeatingSpeed = мнгновенное появление, положительное значение - появление по % от текста, отрицательное - посимволам (округлится вниз)
 
-	Button* CreateButton(std::list<CObject*>::iterator parentObject, sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
-
 	void CreateWidget(Widget* widgetToCreate);
-	//void Animation(std::vector<std::string> pictures, sf::Vector2f location, sf::Vector2f size);
+
+	void CreateAnimation(Animation* anim, std::string pathToFile);
+
+	void DeleteAnimation(Animation* anim);
 
 	//void ResizedAnimation(std::vector<std::string> pictures, std::vector<sf::Vector2f> location, std::vector<sf::Vector2f> size);
 
@@ -59,6 +61,7 @@ private:
 	std::list<UIObject*> UIObjects;
 	std::list<ImGuiLayer*> ImGuiLayers;
 	std::list<Widget*> widgets;
+	std::list<Animation*> animations;
 
 	sf::Vector2f ScalePosition(sf::Vector2f oldPosition);
 };

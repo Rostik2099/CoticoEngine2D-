@@ -12,6 +12,7 @@
 
 class CEngine;
 class Widget;
+class Animation;
 class CObject
 {
 
@@ -24,6 +25,7 @@ public:
 
 	virtual sf::Drawable& GetForDraw();
 	virtual void Tick(float dt);
+	virtual void BeginPlay();
 
 	virtual void setTransparency(float procent);
 
@@ -37,6 +39,8 @@ public:
 		GetEngine()->CreateWidget(newWidget);
 		return newWidget;
 	};
+
+	Animation* PlayAnimation(sf::Sprite* sprite, std::string pathToFile);
 
 private:
 	CEngine* engine;

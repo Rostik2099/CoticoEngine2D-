@@ -1,7 +1,8 @@
 #include "Button.h"
 
-Button::Button(){}
+Button::Button() {}
 
+//Можно будет вырезать
 Button::Button(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor)
 {
 	this->buttonState = Idle;

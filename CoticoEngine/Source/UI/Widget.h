@@ -13,6 +13,7 @@ public:
 	virtual void Tick(float dt) override;
 	virtual void OnConstruct();
 	void ReadFromFile();
+
 protected:
 	template<typename Type>
 	Type* Bind(std::string bindableName)

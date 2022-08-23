@@ -1,5 +1,4 @@
 #include "CEngine.h"
-#include "TestWidget.h"
 
 CEngine::CEngine()
 {
@@ -75,11 +74,15 @@ void CEngine::DeteleObject(std::list<CObject*>::iterator object) {
 
 void CEngine::AddObject(CObject* object)
 {
+	object->SetEngine(this);
+	object->BeginPlay();
 	this->Objects.push_back(object);
 }
 
 void CEngine::Update()
 {
+	float deltaTime = this->deltaClock.getElapsedTime().asSeconds();
+
 	if (this->appType == Editor)
 	{
 		ImGui::SFML::Update(*this->window, this->deltaClock.restart());
@@ -89,6 +92,11 @@ void CEngine::Update()
 			layer->Render();
 			layer->Tick();
 		}
+	}
+
+	for (auto& anim : this->animations)
+	{
+		anim->Tick(deltaTime);
 	}
 }
 
@@ -119,17 +127,6 @@ std::list<CObject*>::iterator CEngine::CreateText(std::list<CObject*>::iterator 
 	return parentObject;
 }
 
-Button* CEngine::CreateButton(std::list<CObject*>::iterator parentObject, sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor)
-{
-	position = ScalePosition(position); size = ScalePosition(size); 
-	Button* newButton = new Button(position, size, buttonIdleColor, buttonHoverColor, buttonPressedColor);
-	newButton->SetEngine(this);
-
-	this->Objects.insert(parentObject, newButton);
-	
-	return newButton;
-}
-
 void CEngine::CreateWidget(Widget* widgetToCreate)
 {
 	widgetToCreate->SetEngine(this);
@@ -137,6 +134,17 @@ void CEngine::CreateWidget(Widget* widgetToCreate)
 	widgetToCreate->OnConstruct();
 
 	this->widgets.push_back(widgetToCreate);
+}
+
+void CEngine::CreateAnimation(Animation* anim, std::string pathToFile)
+{
+	anim->SetEngine(this);
+	this->animations.push_back(anim);
+}
+
+void CEngine::DeleteAnimation(Animation* anim)
+{
+
 }
 
 sf::Vector2f CEngine::ScalePosition(sf::Vector2f oldPosition) {

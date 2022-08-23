@@ -18,6 +18,8 @@ sf::Drawable& CObject::GetForDraw()
 
 void CObject::Tick(float dt) {}
 
+void CObject::BeginPlay() {}
+
 void CObject::setTransparency(float procent) {}
 
 CEngine* CObject::GetEngine()
@@ -30,5 +32,9 @@ void CObject::SetEngine(CEngine* engine)
     this->engine = engine;
 }
 
-
-
+Animation* CObject::PlayAnimation(sf::Sprite* sprite, std::string pathToFile)
+{
+    Animation* newAnim = new Animation(sprite, pathToFile);
+    GetEngine()->CreateAnimation(newAnim, pathToFile);
+    return newAnim;
+};
