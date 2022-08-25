@@ -81,7 +81,7 @@ void CEngine::AddObject(CObject* object)
 
 void CEngine::Update()
 {
-	float deltaTime = this->deltaClock.getElapsedTime().asSeconds();
+	this->deltaTime = this->deltaClock.getElapsedTime().asSeconds();
 
 	if (this->appType == Editor)
 	{
@@ -98,6 +98,9 @@ void CEngine::Update()
 	{
 		anim->Tick(deltaTime);
 	}
+
+	//Äכÿ חאלונא פןסא ט פנוילעאילא
+	//std::cout << deltaTime << "  FPS: " << (float)1000/(deltaTime*(float)1000) << std::endl;
 }
 
 void CEngine::Draw()
@@ -106,11 +109,11 @@ void CEngine::Draw()
 
 	for(auto &t : this->Objects) {
 		this->window->draw(t->GetForDraw());
-		t->Tick(this->deltaClock.restart().asSeconds());
+		t->Tick(this->deltaTime);
 	}
 	for (auto& widget : this->widgets)
 	{
-		widget->Tick(this->deltaClock.restart().asSeconds());
+		widget->Tick(this->deltaTime);
 		widget->Draw();
 	}
 	//std::cout << "Objects in window: " << Objects.size() << std::endl;

@@ -16,8 +16,8 @@ sf::Drawable& TestAnim::GetForDraw()
 
 void TestAnim::BeginPlay()
 {
-	/*this->animation =*/ PlayAnimation(&sprite, "Content/Animations/Biba.png");
-	//this->widget = CreateWidget<TWidget>();
-	//TWidget* Test = dynamic_cast<TWidget*>(widget);
-	//Test->anim = this->animation;
+	this->animation = PlayAnimation(&sprite, "Content/Animations/Biba.png");
+	this->widget = CreateWidget<TWidget>();
+	TWidget* Test = dynamic_cast<TWidget*>(widget);
+	Test->anim = this->animation;
 }

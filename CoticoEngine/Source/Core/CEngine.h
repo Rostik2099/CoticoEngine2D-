@@ -64,5 +64,7 @@ private:
 	std::list<Animation*> animations;
 
 	sf::Vector2f ScalePosition(sf::Vector2f oldPosition);
+
+	float deltaTime = 0.f;
 };
 

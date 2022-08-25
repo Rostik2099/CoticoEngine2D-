@@ -28,8 +28,8 @@ int main()
 	//Main loop
 	while (Engine.window->isOpen())
 	{
-		Engine.UpdateWindowEvents();
 		Engine.Update();
+		Engine.UpdateWindowEvents();
 		Engine.Draw();
 	}
 
