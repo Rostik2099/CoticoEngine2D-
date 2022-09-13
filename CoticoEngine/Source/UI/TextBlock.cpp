@@ -81,7 +81,12 @@ void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> pro
     this->text.setPosition(params.position);
     this->font.loadFromFile(params.fontPath);
     this->text.setFont(this->font);
-    this->text.setString(params.text);
+    SetText(params.text);
+}
+
+void TextBlock::SetText(std::string text)
+{
+    this->text.setString(text);
 }
 
 void TextBlock::setTransparency(float procent) {

@@ -1,22 +1,41 @@
 #include "Properties.h"
 
+#include "UI/TextBlock.h"
+
 Properties::Properties() {}
 
 Properties::~Properties(){}
 
+void Properties::ShowButtonParams()
+{
+};
+
+void Properties::ShowTextParams()
+{
+	static char TextBuf[255];
+	ImGui::InputText("Text", TextBuf, sizeof(TextBuf));
+
+	TextBlock* textBlock = static_cast<TextBlock*>(this->currentElem);
+	std::string text(TextBuf);
+	textBlock->SetText(text);
+};
+
 void Properties::Render()
 {
 	ImGui::Begin("Properties", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
-	ImGui::InputText("Text", this->buffer, CHAR_MAX);
-	ImGui::ColorEdit3("Idle Color", idleColor);
-	ImGui::ColorEdit3("Hover Color", hoverColor);
-	ImGui::ColorEdit3("Pressed Color", pressedColor);
+	if (this->currentElem)
+	{
+		if (this->currentElem->type == "Button")
+			ShowButtonParams();
+		if (this->currentElem->type == "TextBlock")
+			ShowTextParams();
+	}
 	ImGui::End();
 }
 
-void Properties::Tick()
+void Properties::Tick(){}
+
+void Properties::SetCurrentElement(UIObject* elem)
 {
-	this->button->idleColor = sf::Color((int)(idleColor[0] * 255), (int)(idleColor[1] * 255), (int)(idleColor[2] * 255));
-	this->button->hoverColor = sf::Color((int)(hoverColor[0] * 255), (int)(hoverColor[1] * 255), (int)(hoverColor[2] * 255));
-	this->button->pressedColor = sf::Color((int)(pressedColor[0] * 255), (int)(pressedColor[1] * 255), (int)(pressedColor[2] * 255));
+	this->currentElem = elem;
 }

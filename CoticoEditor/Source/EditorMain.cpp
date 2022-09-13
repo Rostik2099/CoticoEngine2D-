@@ -16,6 +16,7 @@ int main()
 	Properties* Prop = new Properties;
 	ElementsList* ElemList = new ElementsList;
 	ElemList->currentWidget = testAnim->widget;
+	ElemList->props = Prop;
 	Engine.AddIGLayer(Prop);
 	Engine.AddIGLayer(ElemList);
 

@@ -16,6 +16,8 @@ public:
 	virtual void setTransparency(float procent) override;
 	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties) override;
 
+	void SetText(std::string text);
+
 private:
 
 	TextBlock(std::string textStringT, float newPosY, float appearingDelayT, sf::Text textT);

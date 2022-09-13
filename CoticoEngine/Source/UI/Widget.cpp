@@ -4,11 +4,12 @@
 #include "Core/CEngine.h"
 
 template<typename Type>
-UIObject* SpawnUIObject(std::string objName, std::list<std::pair<std::string, std::string>> properties, CObject* widget)
+UIObject* SpawnUIObject(std::string objName, std::string objType, std::list<std::pair<std::string, std::string>> properties, CObject* widget)
 {
 	UIObject* spawnedObject = new Type;
 	spawnedObject->SetEngine(widget->GetEngine());
 	spawnedObject->name = objName;
+	spawnedObject->type = objType;
 	spawnedObject->SetProperties(properties);
 	return spawnedObject;
 }
@@ -72,6 +73,11 @@ void Widget::ReadFromFile()
 	fin.close();
 }
 
+std::list<UIObject*> Widget::GetUIObjects()
+{
+	return this->UIObjects;
+}
+
 
 void Widget::CreateObject(std::string object, std::list<std::string> properties)
 {
@@ -95,12 +101,12 @@ void Widget::CreateObject(std::string object, std::list<std::string> properties)
 	
 	if (objClass == "Button")
 	{
-		this->UIObjects.push_back(SpawnUIObject<Button>(objName, params, this));
+		this->UIObjects.push_back(SpawnUIObject<Button>(objName, objClass, params, this));
 		return;
 	}
 	if (objClass == "TextBlock")
 	{
-		this->UIObjects.push_back(SpawnUIObject<TextBlock>(objName, params, this));
+		this->UIObjects.push_back(SpawnUIObject<TextBlock>(objName, objClass, params, this));
 		return;
 	}
 	else std::cout << "Failed to create UI Object" << std::endl;

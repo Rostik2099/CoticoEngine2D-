@@ -14,6 +14,8 @@ public:
 	virtual void OnConstruct();
 	void ReadFromFile();
 
+	std::list<UIObject*> GetUIObjects();
+
 protected:
 	template<typename Type>
 	Type* Bind(std::string bindableName)
