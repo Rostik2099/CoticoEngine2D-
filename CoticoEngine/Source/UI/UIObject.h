@@ -43,7 +43,6 @@ protected:
 
 public:
 	std::string name;
-	std::string type;
 
 //Parsers
 private:

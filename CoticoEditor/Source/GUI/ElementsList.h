@@ -2,15 +2,12 @@
 #include "IMGui/ImGuiLayer.h"
 #include "UI/Widget.h"
 
-class Properties;
-
 class ElementsList : public ImGuiLayer 
 {
 public:
 	ElementsList();
 	virtual void Render() override;
-
+	int selectedElement;
 	Widget* currentWidget;
-	Properties* props;
 };
 

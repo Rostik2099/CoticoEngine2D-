@@ -39,7 +39,7 @@ void Animation::Tick(float dt)
 
 		if (this->totalTime >= this->switchTime)
 		{
-			totalTime = 0.f;
+			totalTime -= switchTime;
 			this->currentImage.x++;
 
 			if (this->currentImage.x >= imageCount.x)
