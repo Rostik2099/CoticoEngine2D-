@@ -8,7 +8,6 @@ class Button : public UIObject
 
 public:
 	Button();
-	Button(sf::Vector2f position, sf::Vector2f size, sf::Color buttonIdleColor, sf::Color buttonHoverColor, sf::Color buttonPressedColor);
 	~Button();
 
 	virtual sf::Drawable& GetForDraw() override;
@@ -17,6 +16,8 @@ public:
 
 	bool isPressed() const;
 
+private:
+	bool IsMouseOver();
 private:
 	sf::RectangleShape buttonShape;
 

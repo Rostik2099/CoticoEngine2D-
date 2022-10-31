@@ -1,0 +1,10 @@
+type=default
+bgImage=2.jpg
+
+mainText=Котик хочет коммунизм!
+leftText=Дать ему коммунизм
+leftLevel=MainMenu
+
+rightText=Не давать
+rightLevel=Kolya
+#

@@ -1,6 +1,7 @@
 #include "Widget.h"
 #include "UI/Button.h"
 #include"UI/TextBlock.h"
+#include "UI/Border.h"
 #include "Core/CEngine.h"
 
 template<typename Type>
@@ -17,10 +18,12 @@ Widget::Widget(){  }
 
 Widget::~Widget()
 {
+	CObject::~CObject();
 	for (auto& object : this->UIObjects)
 	{
 		delete object;
 	}
+	this->UIObjects.clear();
 }
 
 void Widget::Draw()
@@ -72,6 +75,11 @@ void Widget::ReadFromFile()
 	fin.close();
 }
 
+void Widget::Destroy()
+{
+	GetEngine()->DeleteWidget(this);
+}
+
 
 void Widget::CreateObject(std::string object, std::list<std::string> properties)
 {
@@ -101,6 +109,11 @@ void Widget::CreateObject(std::string object, std::list<std::string> properties)
 	if (objClass == "TextBlock")
 	{
 		this->UIObjects.push_back(SpawnUIObject<TextBlock>(objName, params, this));
+		return;
+	}
+	if (objClass == "Border")
+	{
+		this->UIObjects.push_back(SpawnUIObject<Border>(objName, params, this));
 		return;
 	}
 	else std::cout << "Failed to create UI Object" << std::endl;

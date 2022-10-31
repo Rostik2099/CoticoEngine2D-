@@ -31,4 +31,9 @@ position=115,85
 size=100,50
 text=Salo
 fontPath=Content/Fonts/arial.ttf
+
+#Border=Pepper
+position=0,500
+size=1280,300
+color=255,255,255,255
 #

@@ -14,6 +14,8 @@ public:
 	virtual void OnConstruct();
 	void ReadFromFile();
 
+	void Destroy();
+
 protected:
 	template<typename Type>
 	Type* Bind(std::string bindableName)
@@ -31,10 +33,8 @@ protected:
 			std::cout << "Failed to Bind: " << bindableName << std::endl;
 		return bindableObject;
 	};
-
 private:
 	void CreateObject(std::string object, std::list<std::string> properties);
-
 protected:
 	std::list<UIObject*> UIObjects;
 	std::string pathToFile = "Content/Ruslan.cewidget";

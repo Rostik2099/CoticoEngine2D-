@@ -16,10 +16,10 @@ public:
 	virtual void setTransparency(float procent) override;
 	virtual void SetProperties(std::list<std::pair<std::string, std::string>> properties) override;
 
+	void UpdateTextBlock(std::string textString);
 private:
 
 	TextBlock(std::string textStringT, float newPosY, float appearingDelayT, sf::Text textT);
-	void UpdateTextBlock(std::string textString);
 	std::list<std::pair<std::string, int>> strParcing(std::string str);
 
 	//Variables

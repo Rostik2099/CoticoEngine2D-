@@ -57,22 +57,22 @@ sf::Drawable& TextBlock::GetForDraw() {
 }
 
 void TextBlock::Tick(float dt) {
-    if (progress < 1.0)  {
-
-    
-        if(procentSpeed) {
-            if(lastDelay > 0) --lastDelay;
-            else {
-                UpdateTextBlock(textString.substr(0, ceil(textString.size() * progress)));
-                lastDelay = appearingDelay;
-                progress += 1.0001 / textString.size();
-            }
-        }
-        else {
-            progress += (1.0 / appearingDelay);
-            UpdateTextBlock(textString.substr(0, floor(textString.size() * progress)));
-        }
-    }
+    //if (progress < 1.0)  {
+    //
+    //
+    //    if(procentSpeed) {
+    //        if(lastDelay > 0) --lastDelay;
+    //        else {
+    //            UpdateTextBlock(textString.substr(0, ceil(textString.size() * progress)));
+    //            lastDelay = appearingDelay;
+    //            progress += 1.0001 / textString.size();
+    //        }
+    //    }
+    //    else {
+    //        progress += (1.0 / appearingDelay);
+    //        UpdateTextBlock(textString.substr(0, floor(textString.size() * progress)));
+    //    }
+    //}
 }   
 
 void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> properties)
@@ -80,8 +80,9 @@ void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> pro
     TextBlockParams params = GetTextParams(properties);
     this->text.setPosition(params.position);
     this->font.loadFromFile(params.fontPath);
+    this->text.setCharacterSize(params.charSize);
     this->text.setFont(this->font);
-    this->text.setString(params.text);
+    this->text.setString(sf::String::fromUtf8(params.text.begin(), params.text.end()));
 }
 
 void TextBlock::setTransparency(float procent) {

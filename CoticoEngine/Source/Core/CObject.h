@@ -13,6 +13,8 @@
 class CEngine;
 class Widget;
 class Animation;
+class InputManager;
+
 class CObject
 {
 
@@ -42,8 +44,12 @@ public:
 
 	Animation* PlayAnimation(sf::Sprite* sprite, std::string pathToFile);
 
+protected:
+	InputManager* GetInputManager();
 private:
 	CEngine* engine;
+public:
+	bool deleted = 0;
 };
 
 

@@ -33,6 +33,7 @@ void CEngine::AddIGLayer(ImGuiLayer* newLayer)
 
 void CEngine::Init()
 {
+	this->inpManager = new InputManager;
 	std::cout << "Welcome to Cotico Engine! The best engine in the world!!!" << std::endl;
 }
 
@@ -41,13 +42,13 @@ void CEngine::CreateAppWindow(unsigned int windowWidth, unsigned int windowHeigh
 	this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), windowName, windowStyle);
 	if (frameLimit != 0) this->window->setFramerateLimit(frameLimit);
 	std::list<CObject*>::iterator &Object = GetObjectsBegin();
-	TextBlock *newText = new TextBlock(Objects, Object, "Cotico Engine", sf::Vector2f(0.5, 0.5), sf::Vector2f(0.2, 0.2), "Content/Fonts/Calibri.ttf", 120, 0.0, 15.0, sf::Color::White, sf::Text::Bold);
-	sf::Clock clock; 
-	for(int i = 1; i > 0; i -= 0.01) {
-		clock.restart();
-		newText->setTransparency(i);
-		while(clock.getElapsedTime().asSeconds() < 0.03);
-	}
+	//TextBlock *newText = new TextBlock(Objects, Object, "Cotico Engine", sf::Vector2f(0.5, 0.5), sf::Vector2f(0.2, 0.2), "Content/Fonts/Calibri.ttf", 120, 0.0, 15.0, sf::Color::White, sf::Text::Bold);
+	//sf::Clock clock; 
+	//for(int i = 1; i > 0; i -= 0.01) {
+	//	clock.restart();
+	//	newText->setTransparency(i);
+	//	while(clock.getElapsedTime().asSeconds() < 0.03);
+	//}
 	DeteleObject(Object);
 }
 
@@ -60,6 +61,14 @@ void CEngine::UpdateWindowEvents()
 			ImGui::SFML::ProcessEvent(*this->windowEvent);
 		if (this->windowEvent->type == sf::Event::Closed)
 			this->window->close();
+		if (windowEvent->type == sf::Event::MouseButtonPressed)
+		{
+			this->inpManager->leftMousePressed = true;
+		}
+		if (windowEvent->type == sf::Event::MouseButtonReleased)
+		{
+			this->inpManager->leftMousePressed = false;
+		}
 	}
 	delete this->windowEvent;
 }
@@ -111,10 +120,15 @@ void CEngine::Draw()
 		this->window->draw(t->GetForDraw());
 		t->Tick(this->deltaTime);
 	}
+
 	for (auto& widget : this->widgets)
 	{
-		widget->Tick(this->deltaTime);
-		widget->Draw();
+		if (!widget->deleted)
+		{
+			widget->Tick(this->deltaTime);
+			if (!widget->deleted)
+				widget->Draw();
+		}
 	}
 	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)
@@ -139,6 +153,21 @@ void CEngine::CreateWidget(Widget* widgetToCreate)
 	this->widgets.push_back(widgetToCreate);
 }
 
+void CEngine::DeleteWidget(Widget* widgetToDelete)
+{
+	int iter = 0;
+	for ( auto widget : this->widgets)
+	{
+		if (widget == widgetToDelete)
+		{
+			this->widgets.erase(widgets.begin() + iter);
+			delete widgetToDelete;
+			return;
+		}
+		iter++;
+	}
+}
+
 void CEngine::CreateAnimation(Animation* anim, std::string pathToFile)
 {
 	anim->SetEngine(this);
@@ -148,6 +177,11 @@ void CEngine::CreateAnimation(Animation* anim, std::string pathToFile)
 void CEngine::DeleteAnimation(Animation* anim)
 {
 
+}
+
+InputManager* CEngine::GetInputManager()
+{
+	return this->inpManager;
 }
 
 sf::Vector2f CEngine::ScalePosition(sf::Vector2f oldPosition) {

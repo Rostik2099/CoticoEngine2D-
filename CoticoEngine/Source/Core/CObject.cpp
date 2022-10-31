@@ -2,7 +2,12 @@
 #include "Core/CEngine.h"
 
 CObject::CObject() {}
-CObject::~CObject() {}
+
+CObject::~CObject()
+{ 
+    this->deleted = true; 
+    this->engine = nullptr;
+}
 
 sf::Vector2f CObject::GetMousePosition()
 {
@@ -37,4 +42,8 @@ Animation* CObject::PlayAnimation(sf::Sprite* sprite, std::string pathToFile)
     Animation* newAnim = new Animation(sprite, pathToFile);
     GetEngine()->CreateAnimation(newAnim, pathToFile);
     return newAnim;
-};
+}
+InputManager* CObject::GetInputManager()
+{
+    return engine->GetInputManager();
+}

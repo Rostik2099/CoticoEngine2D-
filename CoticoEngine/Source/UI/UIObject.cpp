@@ -2,7 +2,11 @@
 #include "UI/Button.h"
 #include <string>
 
-void UIObject::Tick(float dt) {}
+void UIObject::Tick(float dt) 
+{
+    if (this->deleted)
+        return;
+}
 
 void UIObject::SetProperties(std::list<std::pair<std::string, std::string>> properties){}
 
@@ -21,6 +25,8 @@ TextBlockParams UIObject::GetTextParams(std::list<std::pair<std::string, std::st
             params.size = ParseVector2f(p.second);
         if (p.first == "text")
             params.text = p.second;
+        if (p.first == "charSize")
+            params.charSize = std::stoi(p.second);
         if (p.first == "fontPath")
             params.fontPath = p.second;
     }
@@ -42,6 +48,21 @@ ButtonParams UIObject::GetButtonParams(std::list<std::pair<std::string, std::str
             params.hovColor = ParseColor(p.second);
         if (p.first == "pressedColor")
             params.pressedColor = ParseColor(p.second);
+    }
+    return params;
+}
+
+BorderParams UIObject::GetBorderParams(std::list<std::pair<std::string, std::string>> properties)
+{
+    BorderParams params;
+    for (auto& p : properties)
+    {
+        if (p.first == "position")
+            params.position = ParseVector2f(p.second);
+        if (p.first == "size")
+            params.size = ParseVector2f(p.second);
+        if (p.first == "color")
+            params.color = ParseColor(p.second);
     }
     return params;
 }
