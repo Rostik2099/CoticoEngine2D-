@@ -82,7 +82,7 @@ void TextBlock::SetProperties(std::list<std::pair<std::string, std::string>> pro
     this->font.loadFromFile(params.fontPath);
     this->text.setCharacterSize(params.charSize);
     this->text.setFont(this->font);
-    this->text.setString(sf::String::fromUtf8(params.text.begin(), params.text.end()));
+    UpdateTextBlock(params.text);
 }
 
 void TextBlock::setTransparency(float procent) {
@@ -113,6 +113,7 @@ TextBlock::TextBlock(std::string textStringT, float newPosY, float appearingDela
 
 void TextBlock::UpdateTextBlock(std::string textStr) {
     text.setString(sf::String::fromUtf8(textStr.begin(), textStr.end()));
+    CenterText();
 }
 
 
@@ -129,6 +130,14 @@ std::list<std::pair<std::string, int>> TextBlock::strParcing(std::string str) { 
     }
     strs.push_back(make_pair(str.substr(pos, localSize), localSize));
     return strs;
+}
+
+void TextBlock::CenterText()
+{
+    sf::FloatRect textRect = this->text.getLocalBounds();
+    int newPosX = textRect.left + textRect.width / 2.f;
+    int newPosY = textRect.top + textRect.height / 2.f;
+    this->text.setOrigin(newPosX, newPosY);
 }
 
 sf::Text TextBlock::GetText() { return text; }

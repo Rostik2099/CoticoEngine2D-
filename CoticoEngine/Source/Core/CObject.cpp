@@ -21,7 +21,11 @@ sf::Drawable& CObject::GetForDraw()
     return sf::RectangleShape();
 }
 
-void CObject::Tick(float dt) {}
+void CObject::Tick(float dt) 
+{
+    if (this->deleted)
+        return;
+}
 
 void CObject::BeginPlay() {}
 

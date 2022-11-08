@@ -16,7 +16,7 @@ hovColor=242,255,158,255
 pressedColor=242,0,228,255
 
 #TextBlock=NewGameText
-position=550,247
+position=637,272
 size=200,100
 charSize=36
 textColor=0,0,0,255
@@ -31,7 +31,7 @@ hovColor=242,255,158,255
 pressedColor=242,0,228,255
 
 #TextBlock=ExitText
-position=580,327
+position=637,352
 size=200,100
 charSize=36
 textColor=0,0,0,255
@@ -39,7 +39,7 @@ text=Выход
 fontPath=Content/Fonts/calibri.ttf
 
 #TextBlock=Title
-position=300,85
+position=640,85
 size=200,100
 charSize=72
 textColor=255,255,255,255

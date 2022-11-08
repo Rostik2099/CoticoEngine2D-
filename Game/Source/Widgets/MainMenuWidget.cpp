@@ -19,7 +19,9 @@ void MainMenuWidget::Tick(float dt)
 	Widget::Tick(dt);
 
 	if (newGame->isPressed() && newGame)
+	{
 		curLvl->OpenLevel("Test");
+	}
 	if (exit->isPressed() && exit)
 		GetEngine()->window->close();
 }

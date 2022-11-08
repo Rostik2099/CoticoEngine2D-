@@ -21,7 +21,9 @@ private:
 
 	TextBlock(std::string textStringT, float newPosY, float appearingDelayT, sf::Text textT);
 	std::list<std::pair<std::string, int>> strParcing(std::string str);
+	void CenterText();
 
+private:
 	//Variables
 	bool procentSpeed;
 	sf::Text text;

@@ -11,7 +11,7 @@ hovColor=242,255,158,255
 pressedColor=242,0,228,255
 
 #TextBlock=LeftText
-position=220,630
+position=337,655
 size=200,100
 charSize=26
 textColor=0,0,0,255
@@ -26,7 +26,7 @@ hovColor=242,255,158,255
 pressedColor=242,0,228,255
 
 #TextBlock=RightText
-position=820,630
+position=947,655
 size=200,100
 charSize=26
 textColor=0,0,0,255
@@ -34,7 +34,7 @@ text=Выход
 fontPath=Content/Fonts/calibri.ttf
 
 #TextBlock=MainText
-position=460,570
+position=640,590
 size=200,100
 charSize=36
 textColor=0,0,0,255

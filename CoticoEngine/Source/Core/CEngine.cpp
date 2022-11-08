@@ -123,12 +123,9 @@ void CEngine::Draw()
 
 	for (auto& widget : this->widgets)
 	{
+		widget->Tick(this->deltaTime);
 		if (!widget->deleted)
-		{
-			widget->Tick(this->deltaTime);
-			if (!widget->deleted)
-				widget->Draw();
-		}
+			widget->Draw();
 	}
 	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)
@@ -161,6 +158,7 @@ void CEngine::DeleteWidget(Widget* widgetToDelete)
 		if (widget == widgetToDelete)
 		{
 			this->widgets.erase(widgets.begin() + iter);
+			widgetToDelete->deleted = true;
 			delete widgetToDelete;
 			return;
 		}

@@ -36,6 +36,7 @@ void Widget::Draw()
 
 void Widget::Tick(float dt)
 {
+	CObject::Tick(dt);
 	for (auto& object : this->UIObjects)
 	{
 		object->Tick(dt);

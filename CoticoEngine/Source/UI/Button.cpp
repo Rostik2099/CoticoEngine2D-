@@ -12,31 +12,34 @@ sf::Drawable& Button::GetForDraw()
 
 void Button::Tick(float dt)
 {
-	this->buttonState = Idle;
-	if (IsMouseOver())
-	{	
-		this->buttonState = Hover;
-		if (GetInputManager()->leftMousePressed)
-		{
-			this->buttonState = Pressed;
-			GetInputManager()->leftMousePressed = false;
-		}
-	}
-
-	switch (this->buttonState)
+	if (!deleted)
 	{
-	case Idle:
-		this->buttonShape.setFillColor(this->idleColor);
-		break;
-	case Hover:
-		this->buttonShape.setFillColor(this->hoverColor);
-		break;
-	case Pressed:
-		this->buttonShape.setFillColor(this->pressedColor);
-		break;
-	default:
-		std::cout << "Button error" << std::endl;
-		break;
+		this->buttonState = Idle;
+		if (IsMouseOver())
+		{
+			this->buttonState = Hover;
+			if (GetInputManager()->leftMousePressed)
+			{
+				this->buttonState = Pressed;
+				GetInputManager()->leftMousePressed = false;
+			}
+		}
+
+		switch (this->buttonState)
+		{
+		case Idle:
+			this->buttonShape.setFillColor(this->idleColor);
+			break;
+		case Hover:
+			this->buttonShape.setFillColor(this->hoverColor);
+			break;
+		case Pressed:
+			this->buttonShape.setFillColor(this->pressedColor);
+			break;
+		default:
+			std::cout << "Button error" << std::endl;
+			break;
+		}
 	}
 }
 
