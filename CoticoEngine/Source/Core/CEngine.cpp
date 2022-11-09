@@ -108,6 +108,10 @@ void CEngine::Update()
 		anim->Tick(deltaTime);
 	}
 
+	for (auto& widget : this->widgets)
+	{
+		widget->Tick(this->deltaTime);
+	}
 	//Äכÿ חאלונא פןסא ט פנוילעאילא
 	//std::cout << deltaTime << "  FPS: " << (float)1000/(deltaTime*(float)1000) << std::endl;
 }
@@ -123,9 +127,7 @@ void CEngine::Draw()
 
 	for (auto& widget : this->widgets)
 	{
-		widget->Tick(this->deltaTime);
-		if (!widget->deleted)
-			widget->Draw();
+		widget->Draw();
 	}
 	//std::cout << "Objects in window: " << Objects.size() << std::endl;
 	if(this->appType == Editor)

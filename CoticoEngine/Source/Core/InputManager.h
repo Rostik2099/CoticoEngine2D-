@@ -3,6 +3,8 @@
 class InputManager
 {
 public:
+	InputManager();
+public:
 	bool leftMousePressed;
 };
 
