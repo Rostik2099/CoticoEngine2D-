@@ -1,0 +1,10 @@
+type=default
+bgImage=16.jpg
+
+mainText=А валерьянку будешь?
+leftText=Буду!
+leftLevel=Valerian
+
+rightText=Не буду
+rightLevel=SadPut
+#

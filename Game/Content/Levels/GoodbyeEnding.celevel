@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=1.jpg
+
+mainText=Ваша концовка: Прощание
+leftText=В меню
+leftLevel=MainMenu
+#

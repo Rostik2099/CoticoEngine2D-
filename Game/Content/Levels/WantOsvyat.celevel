@@ -1,0 +1,10 @@
+type=default
+bgImage=7.jpg
+
+mainText=Не хочешь освятить ракету?
+leftText=Хочу!
+leftLevel=Osvyaten
+
+rightText=Не хочу
+rightLevel=YouSure
+#

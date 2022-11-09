@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=14.jpg
+
+mainText=Ваша концовка: Кайфарик
+leftText=В меню
+leftLevel=MainMenu
+#

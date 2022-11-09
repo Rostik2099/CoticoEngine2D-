@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=11.jpg
+
+mainText=Присядь-ка
+leftText=Далее
+leftLevel=SitDownEnding
+#

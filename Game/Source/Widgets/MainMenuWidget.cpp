@@ -20,7 +20,7 @@ void MainMenuWidget::Tick(float dt)
 
 	if (newGame->isPressed() && newGame)
 	{
-		curLvl->OpenLevel("Test");
+		curLvl->OpenLevel("CoticCommi");
 	}
 	if (exit->isPressed() && exit)
 		GetEngine()->window->close();

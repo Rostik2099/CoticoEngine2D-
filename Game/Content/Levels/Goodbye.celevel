@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=9.jpg
+
+mainText=Ну пока
+leftText=Далее
+leftLevel=GoodbyeEnding
+#

@@ -3,8 +3,8 @@ bgImage=2.jpg
 
 mainText=Котик хочет коммунизм!
 leftText=Дать ему коммунизм
-leftLevel=MainMenu
+leftLevel=NiceJoke
 
 rightText=Не давать
-rightLevel=Kolya
+rightLevel=PayNalog
 #

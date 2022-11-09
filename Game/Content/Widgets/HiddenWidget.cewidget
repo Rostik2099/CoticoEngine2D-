@@ -1,0 +1,7 @@
+#Button=Button
+position=370,200
+size=130,200
+idleColor=255,0,0,0
+hovColor=242,255,158,0
+pressedColor=242,0,228,0
+#

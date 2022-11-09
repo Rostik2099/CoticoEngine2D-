@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=13.jpg
+
+mainText=Вы упоролись
+leftText=Далее
+leftLevel=ValerianEnding
+#

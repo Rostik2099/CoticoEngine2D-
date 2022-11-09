@@ -1,0 +1,28 @@
+#Border=MainBorder
+position=0,570
+size=1280,300
+color=40,40,40,220
+
+#Button=LeftButton
+position=513,630
+size=275,50
+idleColor=255,0,0,255
+hovColor=242,255,158,255
+pressedColor=242,0,228,255
+
+#TextBlock=LeftText
+position=650,655
+size=200,100
+charSize=26
+textColor=0,0,0,255
+text=Дать ему коммунизм
+fontPath=Content/Fonts/calibri.ttf
+
+#TextBlock=MainText
+position=640,590
+size=200,100
+charSize=36
+textColor=0,0,0,255
+text=Котик хочет коммунизм!
+fontPath=Content/Fonts/calibri.ttf
+#

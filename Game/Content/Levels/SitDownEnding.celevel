@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=12.jpg
+
+mainText=Ваша концовка: На бутылке
+leftText=В меню
+leftLevel=MainMenu
+#

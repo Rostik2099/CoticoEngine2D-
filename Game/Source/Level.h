@@ -24,11 +24,10 @@ private:
 private:
 	sf::RectangleShape sh;
 	BackGround* BG;
-
 	Widget* currentWidget;
-
-	bool bebra = 0;
+	Widget* hiddenWidget;
 
 	std::string currentLvlType;
+	std::string currentLvlName;
 };
 

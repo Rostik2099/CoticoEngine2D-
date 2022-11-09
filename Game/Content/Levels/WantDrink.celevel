@@ -1,0 +1,10 @@
+type=default
+bgImage=15.jpg
+
+mainText=Выпьем?
+leftText=Выпьем!
+leftLevel=NormDrink
+
+rightText=Не буду
+rightLevel=PutValerian
+#

@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=3.jpg
+
+mainText=Хорошо пошутил, но ты залезай давай
+leftText=Далее
+leftLevel=JokerEnding
+#

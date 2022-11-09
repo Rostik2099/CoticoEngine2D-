@@ -1,0 +1,10 @@
+type=default
+bgImage=4.jpg
+
+mainText=Молодец, а теперь плати налог
+leftText=Заплатить налог
+leftLevel=Naloge
+
+rightText=Не платить налог
+rightLevel=SadPut
+#

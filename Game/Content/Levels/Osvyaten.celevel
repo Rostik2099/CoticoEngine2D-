@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=8.jpg
+
+mainText=Вы освятили ракету
+leftText=Далее
+leftLevel=Goodbye
+#

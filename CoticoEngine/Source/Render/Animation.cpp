@@ -7,10 +7,10 @@ Animation::Animation (sf::Sprite* sprite, std::string pathToFile)
 	this->targetSprite = sprite;
 	this->animAtlas.loadFromFile(pathToFile);
 	this->targetSprite->setTexture(animAtlas);
-	this->targetSprite->setScale(sf::Vector2f(10.f, 10.f));
-	this->imageCount = sf::Vector2u(6, 1);
+	this->targetSprite->setScale(sf::Vector2f(1.f, 1.f));
+	this->imageCount = sf::Vector2u(3, 2);
 	this->switchTime = 0.10f;
-	this->looping = false;
+	this->looping = true;
 
 	this->uvRect = sf::IntRect(0, 0, this->animAtlas.getSize().x / this->imageCount.x, this->animAtlas.getSize().y / this->imageCount.y);
 }

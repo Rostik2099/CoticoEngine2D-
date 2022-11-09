@@ -1,0 +1,7 @@
+type=OneButton
+bgImage=5.jpg
+
+mainText=Я разочарован
+leftText=Далее
+leftLevel=SadPutEnding
+#

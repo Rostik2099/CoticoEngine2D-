@@ -159,7 +159,7 @@ void CEngine::DeleteWidget(Widget* widgetToDelete)
 		{
 			this->widgets.erase(widgets.begin() + iter);
 			widgetToDelete->deleted = true;
-			delete widgetToDelete;
+			//delete widgetToDelete;
 			return;
 		}
 		iter++;

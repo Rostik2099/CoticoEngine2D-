@@ -1,0 +1,10 @@
+type=default
+bgImage=16.jpg
+
+mainText=Нормально выпили?
+leftText=Нормально
+leftLevel=Goodbye
+
+rightText=Навально
+rightLevel=NiceJoke
+#

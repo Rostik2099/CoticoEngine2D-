@@ -2,6 +2,8 @@
 #include "Core/CEngine.h"
 #include "Widgets/MainMenuWidget.h"
 #include "Widgets/DownMenuWidget.h"
+#include "Widgets/OneButtonMenu.h"
+#include "Widgets/HiddenWidget.h"
 
 void Level::BeginPlay()
 {
@@ -48,6 +50,18 @@ void Level::ReadLevel(std::string levelName, std::list<std::pair<std::string, st
 
 void Level::OpenLevel(std::string lvlName)
 {
+	if (lvlName == "Naloge")
+	{
+		hiddenWidget = CreateWidget<HiddenWidget>();
+		HiddenWidget* newWidget = static_cast<HiddenWidget*>(hiddenWidget);
+		newWidget->level = this;
+	}
+	if (currentLvlName == "Naloge")
+	{
+		if(hiddenWidget)
+			hiddenWidget->Destroy();
+	}
+
 	std::list<std::pair<std::string, std::string>> params;
 	ReadLevel(lvlName, params);
 
@@ -69,6 +83,16 @@ void Level::OpenLevel(std::string lvlName)
 					currentWidget->Destroy();
 					currentWidget = CreateWidget<DownMenuWidget>();
 					DownMenuWidget* newWidget = static_cast<DownMenuWidget*>(currentWidget);
+					newWidget->level = this;
+				}
+			}
+			if (param.second == "OneButton")
+			{
+				if (currentLvlType != param.second)
+				{
+					currentWidget->Destroy();
+					currentWidget = CreateWidget<OneButtonMenu>();
+					OneButtonMenu* newWidget = static_cast<OneButtonMenu*>(currentWidget);
 					newWidget->level = this;
 				}
 			}
@@ -96,5 +120,18 @@ void Level::OpenLevel(std::string lvlName)
 				newWidget->mainText->UpdateTextBlock(param.second);
 			}
 		}
+		if (currentLvlType == "OneButton")
+		{
+			OneButtonMenu* newWidget = static_cast<OneButtonMenu*>(currentWidget);
+			if (param.first == "leftText")
+				newWidget->leftText->UpdateTextBlock(param.second);
+			if (param.first == "leftLevel")
+				newWidget->leftLevel = param.second;
+			if (param.first == "mainText")
+			{
+				newWidget->mainText->UpdateTextBlock(param.second);
+			}
+		}
 	}
+	this->currentLvlName = lvlName;
 }

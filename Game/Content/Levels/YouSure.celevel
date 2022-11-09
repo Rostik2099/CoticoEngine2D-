@@ -1,0 +1,10 @@
+type=default
+bgImage=10.jpg
+
+mainText=Ты точно не хочешь её освятить?
+leftText=Хочу валерьянку
+leftLevel=Valerian
+
+rightText=Не хочу!!
+rightLevel=SitDown
+#
