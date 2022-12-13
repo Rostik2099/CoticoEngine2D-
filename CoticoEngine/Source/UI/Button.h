@@ -16,8 +16,15 @@ public:
 
 	bool isPressed() const;
 
+	template<typename Type>
+	void OnClicked(Type* object, void(Type::*func)())
+	{
+
+	};
+
 private:
 	bool IsMouseOver();
+
 private:
 	sf::RectangleShape buttonShape;
 

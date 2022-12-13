@@ -22,6 +22,9 @@ void MainMenuWidget::Tick(float dt)
 	{
 		curLvl->OpenLevel("CoticCommi");
 	}
-	if (exit->isPressed() && exit)
-		GetEngine()->window->close();
+	if (exit)
+	{
+		if (exit->isPressed() && exit)
+			GetEngine()->window->close();
+	}
 }
